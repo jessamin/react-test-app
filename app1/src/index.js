@@ -15,7 +15,21 @@ ReactDOM.render(
 ReactDOM.render(
   test1,
   document.getElementById('test1')
-)
+);
+
+
+class Hello extends React.Component {
+  render() {
+    return <div>Second task: Create {this.props.toWhat}</div>;
+  }
+}
+
+ReactDOM.render(
+  <Hello toWhat="Component" />,
+  document.getElementById('test2')
+);
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
