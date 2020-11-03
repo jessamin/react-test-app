@@ -18,14 +18,14 @@ ReactDOM.render(
 );
 
 
-class Hello extends React.Component {
+class Hello extends React.PureComponent {
   render() {
-    return <div>Second task: Create {this.props.toWhat}</div>;
+    return <div>Third task: Create PureComponent</div>;
   }
 }
 
 ReactDOM.render(
-  <Hello toWhat="Component" />,
+  <Hello />,
   document.getElementById('test2')
 );
 
