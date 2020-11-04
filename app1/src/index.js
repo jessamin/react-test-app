@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import test1 from './test1';
+import Elements from './task1';
+import Comp from './task2';
+import PureComp from './task3';
+import Func from './task4';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,23 +16,24 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-  test1,
-  document.getElementById('test1')
+  Elements,
+  document.getElementById('task1')
 );
-
-
-class Hello extends React.PureComponent {
-  render() {
-    return <div>Third task: Create PureComponent</div>;
-  }
-}
 
 ReactDOM.render(
-  <Hello />,
-  document.getElementById('test2')
+  <Comp />,
+  document.getElementById('task2')
 );
 
+ReactDOM.render(
+  <PureComp />,
+  document.getElementById('task3')
+);
 
+ReactDOM.render(
+  Func(),
+  document.getElementById('task4')
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
