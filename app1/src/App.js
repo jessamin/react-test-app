@@ -7,7 +7,7 @@ import Func from './task4';
 function App() {
   return (
     <div>
-      Elements
+      {Elements}
       <Comp />
       <PureComp />
       <Func />
