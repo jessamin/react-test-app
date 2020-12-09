@@ -1,16 +1,14 @@
 import './App.css';
-import Elements from './task1';
-import Comp from './task2';
-import PureComp from './task3';
-import Func from './task4';
+import Header from './Components/Header/Header';
+import MainContent from './Components/MainContent/MainContent';
+import Controls from './Components/Controls/Controls';
 
 function App() {
   return (
-    <div>
-      {Elements}
-      <Comp />
-      <PureComp />
-      <Func />
+    <div class="movie-page">
+      <Header />
+      <Controls />
+      <MainContent />
     </div>
   );
 }
