@@ -6,11 +6,12 @@ function MainContent() {
   return (
     <div className="main-content">
       <ErrorBoundary1>
-        <MovieCard
-          title="Pulp Fiction"
-          genre="Action & Adventure"
-          date="2004"
-        />
+      <MovieCard
+        title="Pulp Fiction"
+        genre="Action & Adventure"
+        date="2004"
+        image="pulpfiction"
+      />
       </ErrorBoundary1>
       <MovieCard
         title="Bohemian Rhapsody"
