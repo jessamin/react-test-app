@@ -15,10 +15,10 @@ function MovieCardControls() {
             <a className="close" onClick={close}>
               &times;
             </a>
+
             <div className="content">
               <MovieForm />
             </div>
-
 
             <div className="actions">
               <button
@@ -43,10 +43,10 @@ function MovieCardControls() {
             <a className="close" onClick={close}>
               &times;
             </a>
+
             <div className="content">
               <MovieDelete />
             </div>
-
 
             <div className="actions">
               <button

@@ -1,5 +1,5 @@
 import React from 'react'
-import image from '../../img/default-img.png';
+import image from '../img/default-img.png';
 
 function ErrorBoundary(props) {
 
