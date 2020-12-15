@@ -1,11 +1,6 @@
 import React from 'react'
 import Popup from 'reactjs-popup'
-import TitleField from '../Dialogs/TitleField'
-import ReleaseDateField from '../Dialogs/ReleaseDateField'
-import UrlField from '../Dialogs/UrlField'
-import GenreField from '../Dialogs/GenreField'
-import OverviewField from '../Dialogs/OverviewField'
-import RuntimeField from '../Dialogs/RuntimeField'
+import MovieForm from "../Dialogs/MovieForm"
 
 function HeaderAddMovieBtn() {
   return (
@@ -18,15 +13,7 @@ function HeaderAddMovieBtn() {
           <a className="close" onClick={close}>
             &times;
           </a>
-          <div className="header"> Add Movie </div>
-          <div className="content">
-            <TitleField />
-            <ReleaseDateField />
-            <UrlField />
-            <GenreField />
-            <OverviewField />
-            <RuntimeField />
-          </div>
+          <MovieForm />
           <div className="actions">
             <button
               className="button"

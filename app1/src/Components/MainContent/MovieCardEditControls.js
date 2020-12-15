@@ -1,14 +1,6 @@
 import React from 'react'
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
-
-import TitleField from '../Dialogs/TitleField'
-import ReleaseDateField from '../Dialogs/ReleaseDateField'
-import UrlField from '../Dialogs/UrlField'
-import GenreField from '../Dialogs/GenreField'
-import OverviewField from '../Dialogs/OverviewField'
-import RuntimeField from '../Dialogs/RuntimeField'
-import DeleteBtn from '../Dialogs/DeleteBtn'
+import Popup from 'reactjs-popup'
+import MovieCardControls from '../Dialogs/MovieCardControls'
 
 function MovieCardEditControls(props) {
   return (
@@ -21,41 +13,9 @@ function MovieCardEditControls(props) {
           <a className="close" onClick={close}>
             &times;
           </a>
-          <div className="content">
-            <Popup
-              trigger={<div className="menu-item"> Edit </div>}
-              position="right top"
-              on="hover"
-              closeOnDocumentClick
-              mouseLeaveDelay={300}
-              mouseEnterDelay={0}
-              contentStyle={{ padding: "0px", border: "none" }}
-            >
-              <div className="edit-form">
-                <TitleField />
-                <ReleaseDateField />
-                <UrlField />
-                <GenreField />
-                <OverviewField />
-                <RuntimeField />
-              </div>
-            </Popup>
-            <Popup
-              trigger={<div className="menu-item"> Delete </div>}
-              position="right top"
-              on="hover"
-              closeOnDocumentClick
-              mouseLeaveDelay={300}
-              mouseEnterDelay={0}
-              contentStyle={{ padding: "0px", border: "none" }}
-            >
-              <div className="delete-form">
-                <h2>DELETE MOVIE</h2>
-                <p>Are you sure you want to delete this movie?</p>
-                <DeleteBtn />
-              </div>
-            </Popup>
-          </div>
+
+          <MovieCardControls />
+
           <div className="actions">
             <button
               className="button"

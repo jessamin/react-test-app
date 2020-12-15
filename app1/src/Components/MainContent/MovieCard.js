@@ -1,12 +1,12 @@
 import React from 'react'
 import './css/MovieCard.css'
-import DetailsContent from '../MovieDetails/DetailsContent';
+import MovieCardEditControls from './MovieCardEditControls'
+
 
 function MovieCard(props) {
   return (
     <div className="movie-card">
-      <DetailsContent {...props} />
-      <button className="edit-controls">...</button>
+      <MovieCardEditControls />
       <h3>{props.title}</h3>
       <p>{props.genre}</p>
       <p>{props.date}</p>
