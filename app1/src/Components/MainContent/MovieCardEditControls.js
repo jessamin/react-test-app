@@ -1,4 +1,7 @@
 import React from 'react'
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+
 import TitleField from '../Dialogs/TitleField'
 import ReleaseDateField from '../Dialogs/ReleaseDateField'
 import UrlField from '../Dialogs/UrlField'
