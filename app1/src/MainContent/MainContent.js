@@ -1,27 +1,14 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import MovieCard from './MovieCard';
-import axios from "axios/index";
+import { connect } from 'react-redux'
 
-function MainContent() {
-  const [movieList, setMovieList] = useState([])
+function MainContent(props) {
 
-  const getMovieList = async () => {
-    try {
-      const movieList = await axios.get("http://localhost:4000/movies?limit=6")
-      setMovieList(movieList.data.data);
-    }
-    catch (err) {
-      console.error(err.message);
-    }
-  };
-
-  useEffect(() => {
-    getMovieList()
-  }, [])
+  const movieReduxList = props.movieStoreList;
 
   return (
     <div className="main-content">
-      {movieList.map(movie => (
+      {movieReduxList.map(movie => (
         <MovieCard
           id={movie.id}
           title={movie.title}
@@ -41,4 +28,10 @@ function MainContent() {
   )
 }
 
-export default MainContent
+function mapStateToProps(state) {
+  return {
+    movieStoreList: state.movies
+  }
+}
+
+export default connect(mapStateToProps)(MainContent)

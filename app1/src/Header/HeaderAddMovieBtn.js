@@ -1,5 +1,6 @@
 import React from 'react'
 import Popup from 'reactjs-popup'
+import 'reactjs-popup/dist/index.css';
 import MovieForm from "../Dialogs/MovieForm"
 
 function HeaderAddMovieBtn() {
@@ -13,18 +14,17 @@ function HeaderAddMovieBtn() {
           <a className="close" onClick={close}>
             &times;
           </a>
+          <h2 className="header"> Add Movie </h2>
           <MovieForm />
           <div className="actions">
-            <button
-              className="button"
+            <button className="btn-submit"
               onClick={() => {
                 close();
               }}
             >
               Submit
             </button>
-            <button
-              className="button"
+            <button className="btn-reset"
               onClick={() => {
                 close();
               }}
