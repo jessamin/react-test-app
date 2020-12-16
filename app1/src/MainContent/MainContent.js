@@ -1,72 +1,42 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import MovieCard from './MovieCard';
-import ErrorBoundary1 from './ErrorBoundary';
+import axios from "axios/index";
 
 function MainContent() {
+  const [movieList, setMovieList] = useState([])
+
+  const getMovieList = async () => {
+    try {
+      const movieList = await axios.get("http://localhost:4000/movies?limit=6")
+      setMovieList(movieList.data.data);
+    }
+    catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  useEffect(() => {
+    getMovieList()
+  }, [])
+
   return (
     <div className="main-content">
-      <ErrorBoundary1>
-      <MovieCard
-        title="Pulp Fiction"
-        genre="Action & Adventure"
-        date="2004"
-        image="pulpfiction.png"
-        rating="4.5"
-        reward="Oskar"
-        duration="124"
-        description="Lorem ipsum jsdfgj askjka asdlkfdakf aslkfdkafv adfklvkalfb afklvaklfnv"
-      />
-      </ErrorBoundary1>
-      <MovieCard
-        title="Bohemian Rhapsody"
-        genre="Drama, Biography, Music"
-        date="2003"
-        image="bohemian.png"
-        rating="9"
-        reward=""
-        duration="200"
-        description="Lorem ipsum jsdfgj askjka asdlkfdakf aslkfdkafv adfklvkalfb afklvaklfnv"
-      />
-      <MovieCard
-        title="Bill: Vol2"
-        genre="Oscar Winning Movie"
-        date="1994"
-        image="bill.png"
-        rating="10"
-        reward=""
-        duration="90"
-        description="Lorem ipsum jsdfgj askjka asdlkfdakf aslkfdkafv adfklvkalfb afklvaklfnv"
-      />
-      <MovieCard
-        title="Avengers: War of Infinity"
-        genre="Action & Adventure"
-        date="2004"
-        image="avengers.png"
-        rating="5"
-        reward="Oskar"
-        duration="100"
-        description="Lorem ipsum jsdfgj askjka asdlkfdakf aslkfdkafv adfklvkalfb afklvaklfnv"
-      />
-      <MovieCard
-        title="Inception"
-        genre="Action & Adventure"
-        date="2003"
-        image="inseption.png"
-        rating="7.9"
-        reward=""
-        duration="500"
-        description="Lorem ipsum jsdfgj askjka asdlkfdakf aslkfdkafv adfklvkalfb afklvaklfnv"
-      />
-      <MovieCard
-        title="Reservoir dogs"
-        genre="Oscar Winning Movie"
-        date="1994"
-        image="rdogs.png"
-        rating="7"
-        reward="etlkgne"
-        duration="222"
-        description="Lorem ipsum jsdfgj askjka asdlkfdakf aslkfdkafv adfklvkalfb afklvaklfnv"
-      />
+      {movieList.map(movie => (
+        <MovieCard
+          id={movie.id}
+          title={movie.title}
+          genres={movie.genres}
+          budget={movie.budget}
+          overview={movie.overview}
+          poster_path={movie.poster_path}
+          release_date={movie.release_date}
+          revenue={movie.revenue}
+          runtime={movie.runtime}
+          tagline={movie.tagline}
+          vote_average={movie.vote_average}
+          vote_count={movie.vote_count}
+        />
+      ))}
     </div>
   )
 }

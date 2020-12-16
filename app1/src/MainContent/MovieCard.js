@@ -9,8 +9,8 @@ function MovieCard(props) {
       <MovieCardEditControls />
       <h3>{props.title}</h3>
       <p>{props.genre}</p>
-      <p>{props.date}</p>
-      <img src={process.env.PUBLIC_URL + '/img/' + props.image} width="250px"/>
+      <p>{props.release_date}</p>
+      <img src={props.poster_path} width="250px"/>
     </div>
   )
 }
