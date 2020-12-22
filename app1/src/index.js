@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { getMovieListAction } from './redux/actions'
+// import { getMovieListAction } from './redux/actions'
 
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
