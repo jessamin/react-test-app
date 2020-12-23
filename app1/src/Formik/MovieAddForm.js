@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormikControl from "./FormikControl";
 
-function FormikContainer() {
+function MovieAddForm() {
   const dropdownOptions = [
     { key: 'Select an option', value: ''},
     { key: 'Comedy', value: 'comedy'},
@@ -133,4 +133,4 @@ function FormikContainer() {
   )
 }
 
-export default FormikContainer
+export default MovieAddForm

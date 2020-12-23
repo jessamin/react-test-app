@@ -19,11 +19,9 @@ const store = createStore(
 store.dispatch(getInitialList);
 
 ReactDOM.render(
-  <React.StrictMode>
     <Provider store={store}>
       <App />
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById('root')
 );
 

@@ -7,7 +7,7 @@ function MovieCard(props) {
   return (
     <div className="movie-card"
          key={props.id}>
-      <MovieCardEditControls />
+      <MovieCardEditControls mid={props.id}/>
       <h3>{props.title}</h3>
       <p>{props.genre}</p>
       <p>{props.release_date}</p>
