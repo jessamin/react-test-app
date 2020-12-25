@@ -16,11 +16,13 @@ export function selectedValues (options, values) {
     let selectedVals = []
     values.map((item) => {
       let finding = options ? options.find(option => option.value === item) : false
-      finding ? selectedVals.push(finding) : false
+      if (finding) {
+        selectedVals.push(finding)
+      }
     })
     return selectedVals
   }
   else {
-    return options ? options.find(option => options.value == value) : ''
+    return options ? options.find(options => options.value == values) : ''
   }
 }

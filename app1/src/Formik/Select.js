@@ -1,5 +1,5 @@
 import React from 'react'
-import { Field, ErrorMessage, useField, useFormikContext } from 'formik'
+import { ErrorMessage, useField } from 'formik'
 import Select from 'react-select'
 import TextError from './TextError'
 import { dropdownOptions, selectedValues } from './GenresObject'
@@ -7,10 +7,6 @@ import { dropdownOptions, selectedValues } from './GenresObject'
 function CustomSelect(props) {
   const {label, name, ...rest } = props
   const [field, meta] = useField(props)
-
-  const dropdownOptionsSeleted = (options, value) => {
-    return options ? options.find(option => option.value === value) : ''
-  }
 
   return (
     <div className='form-control'>
