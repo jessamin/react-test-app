@@ -1,27 +1,29 @@
 import React from 'react'
-import { Field, ErrorMessage } from 'formik'
+import { Field, ErrorMessage, useField, useFormikContext } from 'formik'
+import Select from 'react-select'
 import TextError from './TextError'
+import { dropdownOptions, selectedValues } from './GenresObject'
 
-function Select(props) {
-  const {label, name, options, ...rest } = props
+function CustomSelect(props) {
+  const {label, name, ...rest } = props
+  const [field, meta] = useField(props)
+
+  const dropdownOptionsSeleted = (options, value) => {
+    return options ? options.find(option => option.value === value) : ''
+  }
 
   return (
     <div className='form-control'>
       <label htmlFor={name}>{label}</label>
-      <Field as='select' multiple={true} id={name} name={name} {...rest} >
-        {
-          options.map(option => {
-            return (
-              <option key={option.value} value={option.value}>
-                {option.key}
-              </option>
-            )
-          })
-        }
-      </Field>
+      <Select
+        closeMenuOnSelect={false}
+        value={selectedValues(dropdownOptions, field.value)}
+        options={dropdownOptions}
+        isMulti
+      />
       <ErrorMessage name={name} component={TextError} />
     </div>
   )
 }
 
-export default Select
+export default CustomSelect

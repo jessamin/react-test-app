@@ -1,7 +1,7 @@
 import React from 'react'
 import Input from './Input'
 import Textarea from './Textarea'
-import Select from './Select'
+import CustomSelect from './Select'
 import DatePicker from './DatePicker'
 
 function FormikControl(props) {
@@ -13,7 +13,7 @@ function FormikControl(props) {
     case 'textarea':
       return <Textarea {...rest} />
     case 'select':
-      return <Select {...rest} />
+      return <CustomSelect {...rest} />
     case 'date':
       return <DatePicker {...rest} />
     default:

@@ -21,7 +21,7 @@ function MovieAddForm() {
     budget: '',
     revenue: '',
     runtime: '',
-    genres: ''
+    genres: []
   }
   const validationSchema = Yup.object({
     title: Yup.string().required('Required'),

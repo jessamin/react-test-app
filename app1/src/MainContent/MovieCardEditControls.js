@@ -7,6 +7,7 @@ function MovieCardEditControls(props) {
     <Popup
       trigger={<button className="button"> ... </button>}
       on="hover"
+      nested
     >
       {close => (
         <div className="modal">

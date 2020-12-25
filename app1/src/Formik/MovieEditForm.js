@@ -37,16 +37,6 @@ function MovieEditForm(props) {
       })
   }, []);
 
-  let dropdownOptions = [
-    { key: 'Select an option', value: ''},
-    { key: 'Animation', value: 'animation'},
-    { key: 'Adventure', value: 'adventure'},
-    { key: 'Family', value: 'family'},
-    { key: 'Comedy', value: 'comedy'},
-    { key: 'Drama', value: 'drama'},
-    { key: 'Romance', value: 'romance'}
-  ]
-
   const validationSchema = Yup.object({
     title: Yup.string().required('Required'),
     poster_path: Yup.string().required('Required'),
@@ -137,7 +127,6 @@ function MovieEditForm(props) {
                 control='select'
                 label='Genres'
                 name='genres'
-                options={dropdownOptions}
               />
 
               <button type="reset">Reset</button>
