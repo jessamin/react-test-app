@@ -4,12 +4,6 @@ import * as Yup from 'yup'
 import FormikControl from "./FormikControl";
 
 function MovieAddForm() {
-  const dropdownOptions = [
-    { key: 'Select an option', value: ''},
-    { key: 'Comedy', value: 'comedy'},
-    { key: 'Drama', value: 'drama'},
-    { key: 'Romance', value: 'romance'}
-  ]
   const initialValues = {
     title: '',
     tagline: '',
@@ -121,7 +115,6 @@ function MovieAddForm() {
               control='select'
               label='Genres'
               name='genres'
-              options={dropdownOptions}
             />
 
             <button type="reset">Reset</button>
