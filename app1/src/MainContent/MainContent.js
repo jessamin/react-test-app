@@ -10,6 +10,7 @@ function MainContent(props) {
     <div className="main-content">
       {movieReduxList.map(movie => (
         <MovieCard
+          key={movie.id}
           id={movie.id}
           title={movie.title}
           genres={movie.genres}

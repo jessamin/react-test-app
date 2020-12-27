@@ -7,6 +7,7 @@ function MovieCardEditControls(props) {
     <Popup
       trigger={<button className="button"> ... </button>}
       on="hover"
+      nested
     >
       {close => (
         <div className="modal">
@@ -14,7 +15,7 @@ function MovieCardEditControls(props) {
             &times;
           </a>
 
-          <MovieCardControls />
+          <MovieCardControls mid={props.mid}/>
 
           <div className="actions">
             <button

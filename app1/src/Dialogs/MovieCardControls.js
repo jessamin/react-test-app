@@ -1,9 +1,9 @@
 import React from 'react'
 import Popup from 'reactjs-popup'
-import MovieForm from './MovieForm'
 import MovieDelete from './MovieDelete'
+import MovieEditForm from "../Formik/MovieEditForm";
 
-function MovieCardControls() {
+function MovieCardControls(props) {
   return (
     <div className="movie-card-controls-popup">
       <Popup
@@ -17,7 +17,7 @@ function MovieCardControls() {
             </a>
 
             <div className="content">
-              <MovieForm />
+              <MovieEditForm mid={props.mid}/>
             </div>
 
             <div className="actions">

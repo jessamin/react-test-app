@@ -5,12 +5,13 @@ import MovieCardEditControls from './MovieCardEditControls'
 
 function MovieCard(props) {
   return (
-    <div className="movie-card">
-      <MovieCardEditControls />
+    <div className="movie-card"
+         key={props.id}>
+      <MovieCardEditControls mid={props.id}/>
       <h3>{props.title}</h3>
       <p>{props.genre}</p>
       <p>{props.release_date}</p>
-      <img src={props.poster_path} width="250px"/>
+      <img alt={props.title} src={props.poster_path} width="250px"/>
     </div>
   )
 }
