@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import MovieCard from './MovieCard';
-import { connect } from 'react-redux'
+import { fetchMoviesAction } from '../redux/actions'
+import { useDispatch, useSelector } from "react-redux";
 
-function MainContent(props) {
+function MainContent() {
+  const dispatch = useDispatch()
+  const movieReduxList = useSelector((state) => {
+    return state.movies.movies
+  })
 
-  const movieReduxList = props.movieStoreList;
+  useEffect(() => {
+    dispatch(fetchMoviesAction())
+  }, [dispatch]);
 
   return (
     <div className="main-content">
@@ -29,10 +36,4 @@ function MainContent(props) {
   )
 }
 
-function mapStateToProps(state) {
-  return {
-    movieStoreList: state.movies
-  }
-}
-
-export default connect(mapStateToProps)(MainContent)
+export default MainContent

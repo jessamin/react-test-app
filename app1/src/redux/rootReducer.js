@@ -1,14 +1,44 @@
-// import { combineReducers } from "redux"
-import {INIT_APPLICATION} from './types'
+import { combineReducers } from "redux"
+import { ACTION } from './types'
 
-// const rootReducer = combineReducers({
-//   movieReducer
-// })
+const rootReducer = combineReducers({
+  movies: movieReducer
+})
 
-function rootReducer (state = {movies: []}, action) {
+function movieReducer (state = {movies: []}, action) {
   switch (action.type) {
-    case INIT_APPLICATION:
+    case ACTION.INIT_APPLICATION:
       return { ...state, movies: action.payload }
+    case ACTION.ADD_MOVIE:
+      return { ...state, movies: action.payload }
+    case ACTION.FETCH_MOVIES:
+      console.log('REDUCER', action.payload)
+      return {
+        ...state,
+        movies: action.payload.data,
+        loading: false,
+        errors: {}
+      }
+    // case ACTION.FETCH_MOVIES_FULFILLED:
+    //   return {
+    //     // ...state, movies: action.payload
+    //     ...state,
+    //     movies: action.payload.data.data,
+    //     loading: false,
+    //     errors: {}
+    //   }
+    // case ACTION.FETCH_MOVIES_PENDING:
+    //   return {
+    //     ...state,
+    //     loading: true,
+    //     errors: {}
+    //   }
+    // case ACTION.FETCH_MOVIES_REJECTED:
+    //   return {
+    //     ...state,
+    //     loading: false,
+    //     errors: { global: action.payload.message }
+    //   }
     default:
       return state
   }
