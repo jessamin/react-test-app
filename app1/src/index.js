@@ -1,22 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import { getMovieListAction } from './redux/actions'
-
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-import rootReducer from './redux/rootReducer'
-import { getInitialList } from './redux/getInitialList'
-
-const store = createStore(
-  rootReducer,
-  applyMiddleware(thunk)
-)
-
-store.dispatch(getInitialList);
+import store from './redux/store'
 
 ReactDOM.render(
     <Provider store={store}>
