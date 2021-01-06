@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react'
 import MovieCard from './MovieCard';
-import { fetchMoviesAction } from '../redux/actions'
+import { fetchMoviesListAction } from '../redux/actions'
 import { useDispatch, useSelector } from "react-redux";
 
 function MainContent() {
   const dispatch = useDispatch()
-  const movieReduxList = useSelector((state) => {
-    return state.movies.movies
-  })
+  const movieReduxList = useSelector(state => state.movies.movies)
 
   useEffect(() => {
-    dispatch(fetchMoviesAction())
+    dispatch(fetchMoviesListAction())
   }, [dispatch]);
 
   return (

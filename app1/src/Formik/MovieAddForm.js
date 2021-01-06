@@ -1,9 +1,16 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormikControl from "./FormikControl";
+import {AddMovieAction} from "../redux/actions";
 
 function MovieAddForm() {
+  const dispatch = useDispatch();
+  const addMovie = (movie) => dispatch( AddMovieAction(movie) )
+  const error = useSelector((state) => state.error)
+  console.log('add movie form error', error)
+
   const initialValues = {
     title: '',
     tagline: '',
@@ -17,6 +24,7 @@ function MovieAddForm() {
     runtime: '',
     genres: []
   }
+
   const validationSchema = Yup.object({
     title: Yup.string().required('Required'),
     poster_path: Yup.string().required('Required'),
@@ -29,19 +37,21 @@ function MovieAddForm() {
     budget: Yup.number(),
     revenue: Yup.number()
   })
+
   const onSubmit = values => {
-    fetch("http://localhost:4000/movies", {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      mode: "cors",
-      body: JSON.stringify(values)
-    })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.log(error));
+    addMovie(values)
+    // fetch("http://localhost:4000/movies", {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   mode: "cors",
+    //   body: JSON.stringify(values)
+    // })
+    //   .then(response => response.json())
+    //   .then(data => console.log(data))
+    //   .catch(error => console.log(error));
   }
 
   return (
@@ -53,6 +63,7 @@ function MovieAddForm() {
       {
         formik => (
           <Form>
+
             <FormikControl
               control='input'
               type='text'

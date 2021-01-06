@@ -40,14 +40,6 @@ function MovieCardControls(props) {
       >
         {close => (
           <div className="modal">
-            <a className="close" onClick={close}>
-              &times;
-            </a>
-
-            <div className="content">
-              <MovieDelete />
-            </div>
-
             <div className="actions">
               <button
                 className="button"
@@ -58,6 +50,13 @@ function MovieCardControls(props) {
                 X
               </button>
             </div>
+
+            <div className="content">
+              <MovieDelete mid={props.mid}
+              />
+            </div>
+
+
           </div>
         )}
       </Popup>
