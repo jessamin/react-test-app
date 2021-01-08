@@ -1,9 +1,17 @@
 import React from 'react'
-import { Formik, Form } from 'formik'
+import { useDispatch, useSelector } from 'react-redux'
+import {Formik, Form, ErrorMessage} from 'formik'
 import * as Yup from 'yup'
+
 import FormikControl from "./FormikControl";
+import {AddMovieAction} from "../redux/actions";
 
 function MovieAddForm() {
+  const dispatch = useDispatch();
+  // const addMovie = movie => dispatch( AddMovieAction(movie) )
+  const error = useSelector((state) => state.movies.error)
+  const errorMsg = useSelector((state) => state.movies.errorMsg)
+
   const initialValues = {
     title: '',
     tagline: '',
@@ -17,42 +25,35 @@ function MovieAddForm() {
     runtime: '',
     genres: []
   }
+
   const validationSchema = Yup.object({
     title: Yup.string().required('Required'),
     poster_path: Yup.string().required('Required'),
     overview: Yup.string().required('Required'),
     runtime: Yup.number().required('Required'),
-    genres: Yup.array().required('Required'),
+    // genres: Yup.array().required('Required'),
     release_date: Yup.date().nullable(),
     vote_average: Yup.number().max(10),
     vote_count: Yup.number(),
     budget: Yup.number(),
     revenue: Yup.number()
   })
-  const onSubmit = values => {
-    fetch("http://localhost:4000/movies", {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      mode: "cors",
-      body: JSON.stringify(values)
-    })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.log(error));
-  }
 
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={onSubmit}
+
+      onSubmit={(values, { setSubmitting }) => {
+        values = {...values, release_date: values['release_date'].getFullYear().toString()}
+        dispatch( AddMovieAction(values) )
+        setSubmitting(false)
+      }}
     >
       {
         formik => (
           <Form>
+            {error ? <div className="font-weight-bold alert alert-danger text-center mt-4">Todos los datos son obligatorios</div> : null}
             <FormikControl
               control='input'
               type='text'
