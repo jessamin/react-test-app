@@ -5,7 +5,7 @@ const rootReducer = combineReducers({
   movies: movieReducer
 })
 
-function movieReducer (state = {movies: [], error: null, loading: false, movie: {}}, action) {
+function movieReducer (state = {movies: [], error: true, errorMsg: '', loading: false, movie: {}}, action) {
   switch (action.type) {
 
     case ACTION.FETCH_MOVIES_INIT:
@@ -41,6 +41,7 @@ function movieReducer (state = {movies: [], error: null, loading: false, movie: 
       return {
         ...state,
         error: true,
+        errorMsg: action.payload
       }
 
 

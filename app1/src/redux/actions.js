@@ -13,7 +13,8 @@ export function fetchMoviesListAction() {
   return dispatch => {
     dispatch(fetchMoviesActionInit());
 
-    axios.get(`http://localhost:4000/movies?limit=6`)
+    // axios.get(`http://localhost:4000/movies?limit=6`)
+    axios.get(`http://localhost:4000/movies`)
       .then(result => {
         dispatch(fetchMoviesActionSuccess(result.data.data))
       })
@@ -40,13 +41,13 @@ export function AddMovieAction(movie) {
   return (dispatch) => {
     dispatch(addMovieInit(movie))
 
-    axios.post('http://localhost:4000/movies', movie)
-      .then(respuesta => {
-        dispatch(addMovieSuccess(movie))
-      })
-      .catch(error => {
-        dispatch(addMovieError(error))
-      })
+    // axios.post('http://localhost:4000/movies', movie)
+    //   .then(respuesta => {
+    //     dispatch(addMovieSuccess(movie))
+    //   })
+    //   .catch(error => {
+    //     dispatch(addMovieError(error))
+    //   })
   }
 }
 
