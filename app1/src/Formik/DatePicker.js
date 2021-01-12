@@ -4,7 +4,14 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { Field, ErrorMessage } from 'formik'
 import TextError from './TextError'
 
+// REDDUX
+import { useDispatch, useSelector } from 'react-redux'
+import {addMovieValidation} from "../redux/actions";
+
 function DatePicker(props) {
+  // REDUX
+  const dispatch = useDispatch();
+
   const [value, setValue] = useState(null);
   const onChange = value => setValue(value)
 
@@ -13,7 +20,7 @@ function DatePicker(props) {
   return (
     <div className='form-control'>
       <label htmlFor={name}>{label}</label>
-      <Field name={name}>
+      <Field name={name} >
         {
           ({form, field}) => {
             const { setFieldValue } = form
@@ -28,7 +35,11 @@ function DatePicker(props) {
                 {...field}
                 {...rest}
                 selected={value}
-                onChange={val => setFieldValue(name, val)}
+                onChange={val => {
+                  // let val1 = val.getFullYear().toString()
+                  setFieldValue(name, val)
+                  dispatch(addMovieValidation({val, field: 'DatePicker'}))  // REDUX
+                }}
               />
             )
           }

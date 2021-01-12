@@ -3,6 +3,7 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormikControl from "./FormikControl";
 import LoadingOverlay from 'react-loading-overlay'
+import CustomSelect from "./Select";
 
 function editMovieSubmit(values) {
   return fetch("http://localhost:4000/movies", {
@@ -123,11 +124,9 @@ function MovieEditForm(props) {
                 label='Runtime'
                 name='runtime'
               />
-              <FormikControl
-                control='select'
+              <CustomSelect
                 label='Genres'
-                name='genres'
-              />
+                name='genres'/>
 
               <button type="reset">Reset</button>
               <button type="submit">Submit</button>

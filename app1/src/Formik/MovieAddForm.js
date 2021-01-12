@@ -3,8 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import {Formik, Form, ErrorMessage} from 'formik'
 import * as Yup from 'yup'
 
-import FormikControl from "./FormikControl";
 import {AddMovieAction} from "../redux/actions";
+
+import FormikControl from "./FormikControl";
+import CustomSelect from "./Select";
+import DatePicker from "./DatePicker";
 
 function MovieAddForm() {
   const dispatch = useDispatch();
@@ -23,7 +26,7 @@ function MovieAddForm() {
     budget: '',
     revenue: '',
     runtime: '',
-    genres: []
+    genres: ['Animation', 'Comedy']
   }
 
   const validationSchema = Yup.object({
@@ -42,7 +45,7 @@ function MovieAddForm() {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={validationSchema}
+      // validationSchema={validationSchema}
 
       onSubmit={(values, { setSubmitting }) => {
         values = {...values, release_date: values['release_date'].getFullYear().toString()}
@@ -52,7 +55,7 @@ function MovieAddForm() {
     >
       {
         formik => (
-          <Form>
+          <Form onSubmit={formik.handleSubmit}>
             {error ? <div className="font-weight-bold alert alert-danger text-center mt-4">Todos los datos son obligatorios</div> : null}
             <FormikControl
               control='input'
@@ -78,11 +81,11 @@ function MovieAddForm() {
               label='Vote count'
               name='vote_count'
             />
-            <FormikControl
-              control='date'
+
+            <DatePicker
               label='Release date'
-              name='release_date'
-            />
+              name='release_date'/>
+
             <FormikControl
               control='input'
               type='text'
@@ -112,11 +115,10 @@ function MovieAddForm() {
               label='Runtime'
               name='runtime'
             />
-            <FormikControl
-              control='select'
+
+            <CustomSelect
               label='Genres'
-              name='genres'
-            />
+              name='genres'/>
 
             <button type="reset">Reset</button>
             <button type="submit">Submit</button>

@@ -41,15 +41,20 @@ export function AddMovieAction(movie) {
   return (dispatch) => {
     dispatch(addMovieInit(movie))
 
-    // axios.post('http://localhost:4000/movies', movie)
-    //   .then(respuesta => {
-    //     dispatch(addMovieSuccess(movie))
-    //   })
-    //   .catch(error => {
-    //     dispatch(addMovieError(error))
-    //   })
+    axios.post('http://localhost:4000/movies', movie)
+      .then(respuesta => {
+        dispatch(addMovieSuccess(movie))
+      })
+      .catch(error => {
+        dispatch(addMovieError(error))
+      })
   }
 }
+
+export const addMovieValidation = (movie) => ({
+  type: ACTION.ADD_MOVIE_VALIDATION,
+  payload: movie
+})
 
 export const addMovieInit = (movie) => ({
   type: ACTION.ADD_MOVIE_INIT,
