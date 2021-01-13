@@ -8,6 +8,7 @@ export function initAppAction(movieList) {
   }
 }
 
+
 // Fetch movies list.
 export function fetchMoviesListAction() {
   return dispatch => {
@@ -32,9 +33,11 @@ export const fetchMoviesActionSuccess = movies => ({
   type: ACTION.FETCH_MOVIES_SUCCESS,
   payload: movies
 })
+
 export const fetchMoviesActionError = () => ({
   type: ACTION.FETCH_MOVIES_ERROR
 })
+
 
 // Add movie.
 export function AddMovieAction(movie) {
@@ -51,12 +54,12 @@ export function AddMovieAction(movie) {
   }
 }
 
-export const addMovieValidation = (movie) => ({
+export const addMovieValidation = movie => ({
   type: ACTION.ADD_MOVIE_VALIDATION,
   payload: movie
 })
 
-export const addMovieInit = (movie) => ({
+export const addMovieInit = movie => ({
   type: ACTION.ADD_MOVIE_INIT,
   payload: movie
 })
@@ -72,7 +75,40 @@ export const addMovieError = error => ({
 })
 
 
-// Edit movie.
+// Edit movie. Fetch.
+export function editMovieFetchAction(id) {
+  return (dispatch) => {
+    dispatch(editMovieFetchInit())
+
+    axios.get(`http://localhost:4000/movies/${id}`)
+      .then(result => {
+        console.log('111111', result)
+        dispatch(editMovieFetchSuccess(result.data))
+      })
+      .catch(error => {
+        console.log('222222', error)
+        dispatch(editMovieFetchError(error))
+      })
+  }
+}
+
+export const editMovieFetchInit = id => ({
+  type: ACTION.EDIT_MOVIE_FETCH_INIT,
+  payload: id
+})
+
+export const editMovieFetchSuccess = movie => ({
+  type: ACTION.EDIT_MOVIE_FETCH_SUCCESS,
+  payload: movie
+})
+
+export const editMovieFetchError = error => ({
+  type: ACTION.EDIT_MOVIE_FETCH_ERROR,
+  payload: error
+})
+
+
+// Edit movie. Submit
 export function editMovieAction(movie) {
   return (dispatch) => {
     dispatch(addMovieInit(movie))
@@ -87,7 +123,7 @@ export function editMovieAction(movie) {
   }
 }
 
-export const editMovieInit = (movie) => ({
+export const editMovieInit = movie => ({
   type: ACTION.ADD_MOVIE_INIT,
   payload: movie
 })

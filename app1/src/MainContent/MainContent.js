@@ -14,21 +14,7 @@ function MainContent() {
   return (
     <div className="main-content">
       {movieReduxList.map(movie => (
-        <MovieCard
-          key={movie.id}
-          id={movie.id}
-          title={movie.title}
-          genres={movie.genres}
-          budget={movie.budget}
-          overview={movie.overview}
-          poster_path={movie.poster_path}
-          release_date={movie.release_date}
-          revenue={movie.revenue}
-          runtime={movie.runtime}
-          tagline={movie.tagline}
-          vote_average={movie.vote_average}
-          vote_count={movie.vote_count}
-        />
+        <MovieCard movie={movie} />
       ))}
     </div>
   )

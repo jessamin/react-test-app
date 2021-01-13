@@ -1,42 +1,27 @@
 import React, { useState, useEffect } from 'react'
-import { Formik, Form } from 'formik'
+import { useDispatch, useSelector } from 'react-redux'
+
+import {Formik, Form, useFormikContext} from 'formik'
 import * as Yup from 'yup'
-import FormikControl from "./FormikControl";
 import LoadingOverlay from 'react-loading-overlay'
 import CustomSelect from "./Select";
+import {editMovieFetchAction, editMovieAction} from "../redux/actions";
+import DatePicker from "./DatePicker";
+import Input from './Input'
+import Textarea from './Textarea'
 
-function editMovieSubmit(values) {
-  return fetch("http://localhost:4000/movies", {
-    method: 'PUT',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    mode: "cors",
-    body: JSON.stringify(values)
-  })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.log(error));
-}
+function MovieEditForm({ mid }) {
+  const [movieData, setMovieData] = useState(null);
 
-function MovieEditForm(props) {
-  const [movieData, setMovieData] = useState();
+  const dispatch = useDispatch();
+  const reduxMovie = useSelector(state => state.movies.movie)
+  if(Object.keys(reduxMovie).length !== 0 && movieData === null) {
+    setMovieData(reduxMovie)
+  }
 
   useEffect(() => {
-    fetch('http://localhost:4000/movies/' + props.mid, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      mode: "cors"
-    })
-      .then(response => response.json())
-      .then(result => {
-        setMovieData(result);
-      })
-  }, []);
+    dispatch(editMovieFetchAction(mid))
+  }, [dispatch]);
 
   const validationSchema = Yup.object({
     title: Yup.string().required('Required'),
@@ -52,78 +37,59 @@ function MovieEditForm(props) {
   })
 
   const onSubmit = (values, actions) => {
-    editMovieSubmit(values)
+    dispatch( editMovieAction(values) )
+    actions.setSubmitting(false)
   }
 
   return (
     <div>
-    { (movieData !== undefined) ?
+    {
+      (movieData !== null) ?
       <Formik
         initialValues={movieData}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
-        {
-          formik => (
+        {() => (
             <Form>
-              <FormikControl
-                control='input'
+              <Input
                 type='text'
                 label='Title'
-                name='title'
-              />
-              <FormikControl
-                control='input'
+                name='title' />
+              <Input
                 type='text'
                 label='Tagline'
-                name='tagline'
-              />
-              <FormikControl
-                control='input'
+                name='tagline' />
+              <Input
                 type='number'
                 label='Vote average'
-                name='vote_average'
-              />
-              <FormikControl
-                control='input'
+                name='vote_average' />
+              <Input
                 type='number'
                 label='Vote count'
-                name='vote_count'
-              />
-              <FormikControl
-                control='date'
+                name='vote_count' />
+              <DatePicker
                 label='Release date'
-                name='release_date'
-              />
-              <FormikControl
-                control='input'
+                name='release_date'/>
+              <Input
                 type='text'
                 label='Poster path'
-                name='poster_path'
-              />
-              <FormikControl
-                control='textarea'
+                name='poster_path' />
+              <Textarea
                 label='Overview'
-                name='overview'
-              />
-              <FormikControl
-                control='input'
+                name='overview' />
+              <Input
                 type='number'
                 label='Budget'
-                name='budget'
-              />
-              <FormikControl
-                control='input'
+                name='budget' />
+              <Input
                 type='number'
                 label='Revenue'
-                name='revenue'
-              />
-              <FormikControl
-                control='input'
+                name='revenue' />
+              <Input
                 type='number'
                 label='Runtime'
-                name='runtime'
-              />
+                name='runtime' />
               <CustomSelect
                 label='Genres'
                 name='genres'/>
@@ -131,8 +97,7 @@ function MovieEditForm(props) {
               <button type="reset">Reset</button>
               <button type="submit">Submit</button>
             </Form>
-          )
-        }
+        )}
       </Formik>
       : <LoadingOverlay />
     }
