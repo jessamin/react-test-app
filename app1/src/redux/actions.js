@@ -8,19 +8,19 @@ export function initAppAction(movieList) {
   }
 }
 
+
 // Fetch movies list.
 export function fetchMoviesListAction() {
-  return dispatch => {
+  return async dispatch => {
     dispatch(fetchMoviesActionInit());
 
-    // axios.get(`http://localhost:4000/movies?limit=6`)
-    axios.get(`http://localhost:4000/movies`)
-      .then(result => {
-        dispatch(fetchMoviesActionSuccess(result.data.data))
-      })
-      .catch(error => {
-        dispatch(fetchMoviesActionError())
-      })
+    try {
+      const response = await axios.get(`http://localhost:4000/movies`);
+      dispatch(fetchMoviesActionSuccess(response.data.data))
+    } catch (error) {
+      dispatch(fetchMoviesActionError(error))
+      throw error;
+    }
   }
 }
 
@@ -32,26 +32,33 @@ export const fetchMoviesActionSuccess = movies => ({
   type: ACTION.FETCH_MOVIES_SUCCESS,
   payload: movies
 })
+
 export const fetchMoviesActionError = () => ({
   type: ACTION.FETCH_MOVIES_ERROR
 })
 
+
 // Add movie.
 export function AddMovieAction(movie) {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(addMovieInit(movie))
 
-    // axios.post('http://localhost:4000/movies', movie)
-    //   .then(respuesta => {
-    //     dispatch(addMovieSuccess(movie))
-    //   })
-    //   .catch(error => {
-    //     dispatch(addMovieError(error))
-    //   })
+    try {
+      const response = await axios.post('http://localhost:4000/movies', movie)
+      dispatch(addMovieSuccess(response.data))
+    } catch (error) {
+      dispatch(addMovieError(error))
+      throw error;
+    }
   }
 }
 
-export const addMovieInit = (movie) => ({
+export const addMovieValidation = movie => ({
+  type: ACTION.ADD_MOVIE_VALIDATION,
+  payload: movie
+})
+
+export const addMovieInit = movie => ({
   type: ACTION.ADD_MOVIE_INIT,
   payload: movie
 })
@@ -67,22 +74,53 @@ export const addMovieError = error => ({
 })
 
 
-// Edit movie.
-export function editMovieAction(movie) {
-  return (dispatch) => {
-    dispatch(addMovieInit(movie))
+// Edit movie. Fetch.
+export function editMovieFetchAction(id) {
+  return async (dispatch) => {
+    dispatch(editMovieFetchInit())
 
-    axios.put('http://localhost:4000/movies', movie)
-      .then(result => {
-        dispatch(editMovieSuccess(result.data))
-      })
-      .catch(error => {
-        dispatch(editMovieError(error))
-      })
+    try {
+      const response = await axios.get(`http://localhost:4000/movies/${id}`);
+      dispatch(editMovieFetchSuccess(response.data))
+    } catch (error) {
+      dispatch(editMovieFetchError(error))
+      throw error;
+    }
   }
 }
 
-export const editMovieInit = (movie) => ({
+export const editMovieFetchInit = id => ({
+  type: ACTION.EDIT_MOVIE_FETCH_INIT,
+  payload: id
+})
+
+export const editMovieFetchSuccess = movie => ({
+  type: ACTION.EDIT_MOVIE_FETCH_SUCCESS,
+  payload: movie
+})
+
+export const editMovieFetchError = error => ({
+  type: ACTION.EDIT_MOVIE_FETCH_ERROR,
+  payload: error
+})
+
+
+// Edit movie. Submit
+export function editMovieAction(movie) {
+  return async (dispatch) => {
+    dispatch(addMovieInit(movie))
+
+    try {
+      const response = await axios.put('http://localhost:4000/movies', movie);
+      dispatch(editMovieSuccess(response.data))
+    } catch (error) {
+      dispatch(editMovieError(error))
+      throw error;
+    }
+  }
+}
+
+export const editMovieInit = movie => ({
   type: ACTION.ADD_MOVIE_INIT,
   payload: movie
 })
@@ -100,16 +138,16 @@ export const editMovieError = error => ({
 
 // Delete movie.
 export function deleteMovieAction(id) {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(deleteMovieInit())
 
-    axios.delete(`http://localhost:4000/movies/${id}`)
-      .then(result => {
-        dispatch(deleteMovieSuccess(id))
-      })
-      .catch(error => {
-        dispatch(deleteMovieError())
-      })
+    try {
+      const response = await axios.delete(`http://localhost:4000/movies/${id}`)
+      dispatch(deleteMovieSuccess(response.data))
+    } catch (error) {
+      dispatch(deleteMovieError(error))
+      throw error;
+    }
   }
 }
 

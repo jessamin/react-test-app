@@ -2,16 +2,22 @@ import React from 'react'
 import './css/MovieCard.css'
 import MovieCardEditControls from './MovieCardEditControls'
 
+function MovieCard({movie}) {
 
-function MovieCard(props) {
   return (
-    <div className="movie-card"
-         key={props.id}>
-      <MovieCardEditControls mid={props.id}/>
-      <h3>{props.title}</h3>
-      <p>{props.genre}</p>
-      <p>{props.release_date}</p>
-      <img alt={props.title} src={props.poster_path} width="250px"/>
+    <div className="movie-card" key={movie.id}>
+      <MovieCardEditControls mid={movie.id} />
+      <h3>{movie.title}</h3>
+      <p>{movie.genres}</p>
+      <p>{movie.release_date}</p>
+      <img
+        alt={movie.title}
+        src={movie.poster_path}
+        onError={(e) => {
+          e.target.onerror = null
+          e.target.src = "/img/default.png"
+        }}
+        width="250px" />
     </div>
   )
 }

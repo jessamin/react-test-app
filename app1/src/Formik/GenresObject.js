@@ -11,7 +11,7 @@ export const dropdownOptions = [
   { label: 'Science Fiction', value: 'Science Fiction'}
 ];
 
-export function selectedValues (options, values) {
+export function selectedValues (values, options = dropdownOptions) {
   if (Array.isArray(values)) {
     let selectedVals = []
     values.map((item) => {

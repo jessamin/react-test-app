@@ -5,10 +5,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/store'
+import ErrorBoundary from "./components/ErrorBoundary";
 
 ReactDOM.render(
     <Provider store={store}>
-      <App />
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
     </Provider>,
   document.getElementById('root')
 );
