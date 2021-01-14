@@ -8,7 +8,7 @@ function MovieCard({movie}) {
     <div className="movie-card" key={movie.id}>
       <MovieCardEditControls mid={movie.id} />
       <h3>{movie.title}</h3>
-      <p>{movie.genres}</p>
+      {/*<p>{movie.genres}</p>*/}
       <p>{movie.release_date}</p>
       <img
         alt={movie.title}

@@ -2,7 +2,7 @@ import React from 'react'
 import {useDispatch} from "react-redux";
 import {deleteMovieAction} from "../redux/actions";
 
-function MovieDelete({mid}) {
+function MovieConfirmDelete({mid}) {
   const dispatch = useDispatch()
 
   const deleteBtnOnClick = mid => {
@@ -14,11 +14,9 @@ function MovieDelete({mid}) {
     <>
       <h1 className="header"> Delete Movie </h1>
       <div className="content"> Are you shure you want to delete this movie? </div>
-      <button
-        onClick={deleteBtnOnClick(mid)}
-      >Confirm</button>
+      <button onClick={deleteBtnOnClick(mid)} >Confirm</button>
     </>
   )
 }
 
-export default MovieDelete
+export default MovieConfirmDelete

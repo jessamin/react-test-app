@@ -12,11 +12,14 @@ function MainContent() {
   }, [dispatch]);
 
   return (
-    <div className="main-content">
-      {movieReduxList.map(movie => (
-        <MovieCard movie={movie} />
-      ))}
-    </div>
+    <>
+      <span>39 movies found</span>
+      <div className="main-content">
+        {movieReduxList.map(movie => (
+          <MovieCard movie={movie} />
+        ))}
+      </div>
+    </>
   )
 }
 
