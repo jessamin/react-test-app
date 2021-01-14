@@ -9,9 +9,9 @@ import ErrorBoundary from "./components/ErrorBoundary";
 
 ReactDOM.render(
     <Provider store={store}>
-      {/*<ErrorBoundary>*/}
+      <ErrorBoundary>
         <App />
-      {/*</ErrorBoundary>*/}
+      </ErrorBoundary>
     </Provider>,
   document.getElementById('root')
 );

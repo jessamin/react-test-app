@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import {Formik, Form, useFormikContext} from 'formik'
+import {Formik, Form, errorMessage} from 'formik'
 import * as Yup from 'yup'
 import LoadingOverlay from 'react-loading-overlay'
 import CustomSelect from "./Select";
@@ -10,7 +10,7 @@ import DatePicker from "./DatePicker";
 import Input from './Input'
 import Textarea from './Textarea'
 
-function MovieEditForm({ mid }) {
+function MovieEditForm({ mid, close }) {
   const [movieData, setMovieData] = useState(null);
 
   const dispatch = useDispatch();
@@ -39,6 +39,8 @@ function MovieEditForm({ mid }) {
   const onSubmit = (values, actions) => {
     dispatch( editMovieAction(values) )
     actions.setSubmitting(false)
+    close()
+    window.location.reload(false)
   }
 
   return (

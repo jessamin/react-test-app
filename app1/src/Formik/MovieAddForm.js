@@ -13,7 +13,7 @@ import Textarea from './Textarea'
 function MovieAddForm() {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.movies.error)
-  const errorMsg = useSelector((state) => state.movies.errorMsg)
+  const msg = useSelector((state) => state.movies.msg)
 
   const initialValues = {
     title: '',
@@ -49,7 +49,7 @@ function MovieAddForm() {
 
       onSubmit={(values, { setSubmitting }) => {
         dispatch( AddMovieAction(values) )
-        // setSubmitting(true)
+        window.location.reload()
       }}
     >
       {

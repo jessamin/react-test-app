@@ -17,7 +17,7 @@ function MovieCardControls(props) {
             </a>
 
             <div className="content">
-              <MovieEditForm mid={props.mid}/>
+              <MovieEditForm {...props}/>
             </div>
 
             <div className="actions">

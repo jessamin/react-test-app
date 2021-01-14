@@ -15,7 +15,7 @@ function MovieCardEditControls(props) {
             &times;
           </a>
 
-          <MovieCardControls mid={props.mid}/>
+          <MovieCardControls {...props} close={close}/>
 
           <div className="actions">
             <button
