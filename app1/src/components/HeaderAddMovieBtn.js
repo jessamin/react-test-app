@@ -18,7 +18,7 @@ function HeaderAddMovieBtn() {
             &times;
           </button>
           <h2 className='header'> Add Movie </h2>
-          <MovieAddForm id=''/>
+          <MovieAddForm id='' close={close}/>
         </div>
       )}
     </Popup>

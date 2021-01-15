@@ -12,11 +12,11 @@ function MovieCardEditControls(props) {
 
           <div className="movie-card-controls-popup">
             <Popup trigger={<button className="button">Edit</button>} on="click" >
-              {close => (
+              {closeIn => (
                 <div className="modal">
-                  <a className="close" onClick={close}> &times; </a>
+                  <a className="close" onClick={closeIn}> &times; </a>
                   <div className="content">
-                    <MovieEditForm {...props}/>
+                    <MovieEditForm {...props} close={close}/>
                   </div>
                 </div>
               )}

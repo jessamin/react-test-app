@@ -10,7 +10,7 @@ import DatePicker from "./DatePicker";
 import Input from './Input'
 import Textarea from './Textarea'
 
-function MovieAddForm() {
+function MovieAddForm({ close }) {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.movies.error)
   const msg = useSelector((state) => state.movies.msg)
@@ -49,7 +49,7 @@ function MovieAddForm() {
 
       onSubmit={(values, { setSubmitting }) => {
         dispatch( AddMovieAction(values) )
-        window.location.reload()
+        close()
       }}
     >
       {

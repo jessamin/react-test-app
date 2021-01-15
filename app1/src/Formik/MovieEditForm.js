@@ -38,9 +38,7 @@ function MovieEditForm({ mid, close }) {
 
   const onSubmit = (values, actions) => {
     dispatch( editMovieAction(values) )
-    actions.setSubmitting(false)
     close()
-    window.location.reload(false)
   }
 
   return (

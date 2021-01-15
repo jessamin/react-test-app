@@ -1,6 +1,8 @@
 import {ACTION} from './types'
 import axios from './client';
 
+const apiUrl = 'http://localhost:4000/movies'
+
 export function initAppAction(movieList) {
   return {
     type: ACTION.FETCH_MOVIES,
@@ -15,7 +17,7 @@ export function fetchMoviesListAction() {
     dispatch(fetchMoviesActionInit());
 
     try {
-      const response = await axios.get(`http://localhost:4000/movies`);
+      const response = await axios.get(apiUrl);
       dispatch(fetchMoviesActionSuccess(response.data.data))
     } catch (error) {
       dispatch(fetchMoviesActionError(error))
@@ -44,19 +46,15 @@ export function AddMovieAction(movie) {
     dispatch(addMovieInit(movie))
 
     try {
-      const response = await axios.post('http://localhost:4000/movies', movie)
+      const response = await axios.post(apiUrl, movie)
       dispatch(addMovieSuccess(response.data))
+      dispatch(fetchMoviesListAction())
     } catch (error) {
       dispatch(addMovieError(error))
       throw error;
     }
   }
 }
-
-export const addMovieValidation = movie => ({
-  type: ACTION.ADD_MOVIE_VALIDATION,
-  payload: movie
-})
 
 export const addMovieInit = movie => ({
   type: ACTION.ADD_MOVIE_INIT,
@@ -80,7 +78,7 @@ export function editMovieFetchAction(id) {
     dispatch(editMovieFetchInit())
 
     try {
-      const response = await axios.get(`http://localhost:4000/movies/${id}`);
+      const response = await axios.get(`${apiUrl}/${id}`);
       dispatch(editMovieFetchSuccess(response.data))
     } catch (error) {
       dispatch(editMovieFetchError(error))
@@ -111,8 +109,9 @@ export function editMovieAction(movie) {
     dispatch(addMovieInit(movie))
 
     try {
-      const response = await axios.put('http://localhost:4000/movies', movie);
+      const response = await axios.put(apiUrl, movie);
       dispatch(editMovieSuccess(response.data))
+      dispatch(fetchMoviesListAction())
     } catch (error) {
       dispatch(editMovieError(error))
       throw error;
@@ -121,17 +120,17 @@ export function editMovieAction(movie) {
 }
 
 export const editMovieInit = movie => ({
-  type: ACTION.ADD_MOVIE_INIT,
+  type: ACTION.EDIT_MOVIE_INIT,
   payload: movie
 })
 
 export const editMovieSuccess = movie => ({
-  type: ACTION.ADD_MOVIE_SUCCESS,
+  type: ACTION.EDIT_MOVIE_SUCCESS,
   payload: movie
 })
 
 export const editMovieError = error => ({
-  type: ACTION.ADD_MOVIE_ERROR,
+  type: ACTION.EDIT_MOVIE_ERROR,
   payload: error
 })
 
@@ -142,7 +141,7 @@ export function deleteMovieAction(id) {
     dispatch(deleteMovieInit())
 
     try {
-      const response = await axios.delete(`http://localhost:4000/movies/${id}`)
+      const response = await axios.delete(`${apiUrl}/${id}`)
       dispatch(deleteMovieSuccess(response.data))
     } catch (error) {
       dispatch(deleteMovieError(error))
