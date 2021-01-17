@@ -1,32 +1,42 @@
 import React from 'react'
 import Popup from 'reactjs-popup'
-import MovieCardControls from '../Dialogs/MovieCardControls'
+import MovieEditForm from "../Formik/MovieEditForm"
+import MovieConfirmDelete from './MovieConfirmDelete'
 
 function MovieCardEditControls(props) {
   return (
-    <Popup
-      trigger={<button className="button"> ... </button>}
-      on="hover"
-      nested
-    >
+    <Popup trigger={<button className="button"> ... </button>} on="hover" nested >
       {close => (
         <div className="modal">
-          <a className="close" onClick={close}>
-            &times;
-          </a>
+          <a className="close" onClick={close}> &times; </a>
 
-          <MovieCardControls {...props} close={close}/>
+          <div className="movie-card-controls-popup">
+            <Popup trigger={<button className="button">Edit</button>} on="click" >
+              {closeIn => (
+                <div className="modal">
+                  <a className="close" onClick={closeIn}> &times; </a>
+                  <div className="content">
+                    <MovieEditForm {...props} close={close}/>
+                  </div>
+                </div>
+              )}
+            </Popup>
 
-          <div className="actions">
-            <button
-              className="button"
-              onClick={() => {
-                close();
-              }}
-            >
-              X
-            </button>
+            <Popup trigger={<button className="button">Delete</button>} on="click" >
+              {close => (
+                <div className="modal">
+                  <div className="actions">
+                    <button className="button" onClick={() => close()} > X </button>
+                  </div>
+
+                  <div className="content">
+                    <MovieConfirmDelete mid={props.mid} />
+                  </div>
+                </div>
+              )}
+            </Popup>
           </div>
+
         </div>
       )}
     </Popup>

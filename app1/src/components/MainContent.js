@@ -1,22 +1,27 @@
 import React, { useEffect } from 'react'
 import MovieCard from './MovieCard';
-import { fetchMoviesListAction } from '../redux/actions'
+import { onLoadMoviesListAction } from '../redux/actions'
 import { useDispatch, useSelector } from "react-redux";
 
 function MainContent() {
   const dispatch = useDispatch()
-  const movieReduxList = useSelector(state => state.movies.movies)
+  const movieReduxList = useSelector(state => state.filter.movies)
+  const totalAmount = useSelector(state => state.filter.count)
+  const filterState = useSelector(state => state.filter.query)
 
   useEffect(() => {
-    dispatch(fetchMoviesListAction())
+    dispatch(onLoadMoviesListAction(filterState))
   }, [dispatch]);
 
   return (
-    <div className="main-content">
-      {movieReduxList.map(movie => (
-        <MovieCard movie={movie} />
-      ))}
-    </div>
+    <>
+      <span> {totalAmount ? totalAmount : 'No'} movies found</span>
+      <div className="main-content">
+        {movieReduxList.map(movie => (
+          <MovieCard movie={movie} key={movie.id} />
+        ))}
+      </div>
+    </>
   )
 }
 

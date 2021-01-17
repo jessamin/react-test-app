@@ -5,12 +5,12 @@ import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 import {AddMovieAction} from "../redux/actions";
 
-import CustomSelect from "./Select";
+import CustomMovieSelect from "./CustomMovieSelect";
 import DatePicker from "./DatePicker";
 import Input from './Input'
 import Textarea from './Textarea'
 
-function MovieAddForm() {
+function MovieAddForm({ close }) {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.movies.error)
   const msg = useSelector((state) => state.movies.msg)
@@ -49,7 +49,7 @@ function MovieAddForm() {
 
       onSubmit={(values, { setSubmitting }) => {
         dispatch( AddMovieAction(values) )
-        window.location.reload()
+        close()
       }}
     >
       {
@@ -95,7 +95,7 @@ function MovieAddForm() {
               type='number'
               label='Runtime'
               name='runtime' />
-            <CustomSelect
+            <CustomMovieSelect
               label='Genres'
               name='genres'/>
 

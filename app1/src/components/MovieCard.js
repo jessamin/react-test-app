@@ -5,10 +5,11 @@ import MovieCardEditControls from './MovieCardEditControls'
 function MovieCard({movie}) {
 
   return (
-    <div className="movie-card" key={movie.id}>
+    <div className="movie-card">
       <MovieCardEditControls mid={movie.id} />
       <h3>{movie.title}</h3>
-      <p>{movie.genres}</p>
+      <p>{movie.vote_average}</p>
+      <p>{movie.genres.map(genre => genre).join(", ")}</p>
       <p>{movie.release_date}</p>
       <img
         alt={movie.title}

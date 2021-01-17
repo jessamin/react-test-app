@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {Formik, Form, errorMessage} from 'formik'
 import * as Yup from 'yup'
 import LoadingOverlay from 'react-loading-overlay'
-import CustomSelect from "./Select";
+import CustomMovieSelect from "./CustomMovieSelect";
 import {editMovieFetchAction, editMovieAction} from "../redux/actions";
 import DatePicker from "./DatePicker";
 import Input from './Input'
@@ -38,9 +38,7 @@ function MovieEditForm({ mid, close }) {
 
   const onSubmit = (values, actions) => {
     dispatch( editMovieAction(values) )
-    actions.setSubmitting(false)
     close()
-    window.location.reload(false)
   }
 
   return (
@@ -92,7 +90,7 @@ function MovieEditForm({ mid, close }) {
                 type='number'
                 label='Runtime'
                 name='runtime' />
-              <CustomSelect
+              <CustomMovieSelect
                 label='Genres'
                 name='genres'/>
 

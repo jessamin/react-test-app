@@ -5,3 +5,5 @@ const axiosClient = axios.create({
 });
 
 export default axiosClient
+
+export const apiUrl = 'http://localhost:4000/movies?'
