@@ -16,15 +16,16 @@ function SortBy() {
   return (
     <form>
       <label htmlFor="sortby"> Sort by</label>
-        <select name="sortby" id="sortby"
-                value={selectValue}
-                onChange={handleChange}>
-          <option value="release_date">Release Date</option>
-          <option value="vote_average">Rating</option>
-        </select>
+      <select name="sortby" id="sortby"
+              value={selectValue}
+              onChange={handleChange}>
+        <option value="release_date">Release Date</option>
+        <option value="vote_average">Rating</option>
+      </select>
 
     </form>
   )
 }
 
 export default SortBy
+
