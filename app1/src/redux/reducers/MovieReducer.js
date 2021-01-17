@@ -1,7 +1,6 @@
 import {ACTION} from "../types";
 
 const initialState = {
-  movies: [],
   movie: {},
   error: true,
   msg: null,
@@ -10,25 +9,6 @@ const initialState = {
 
 function MovieReducer (state = initialState, action) {
   switch (action.type) {
-    case ACTION.FETCH_MOVIES_INIT:
-      return {
-        ...state,
-        error: null,
-        msg: false
-      }
-    case ACTION.FETCH_MOVIES_SUCCESS:
-      return {
-        ...state,
-        movies: action.payload,
-        error: null,
-        msg: false
-      }
-    case ACTION.FETCH_MOVIES_ERROR:
-      return {
-        ...state,
-        error: true,
-        msg: false
-      }
     case ACTION.EDIT_MOVIE_FETCH_INIT:
       return {
         ...state,

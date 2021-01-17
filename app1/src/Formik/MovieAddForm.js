@@ -5,7 +5,7 @@ import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 import {AddMovieAction} from "../redux/actions";
 
-import CustomSelect from "./Select";
+import CustomMovieSelect from "./CustomMovieSelect";
 import DatePicker from "./DatePicker";
 import Input from './Input'
 import Textarea from './Textarea'
@@ -95,7 +95,7 @@ function MovieAddForm({ close }) {
               type='number'
               label='Runtime'
               name='runtime' />
-            <CustomSelect
+            <CustomMovieSelect
               label='Genres'
               name='genres'/>
 

@@ -5,7 +5,7 @@ import Select from 'react-select'
 import TextError from './TextError'
 import { dropdownOptions, selectedValues } from './GenresObject'
 
-function CustomSelect({ label, name }) {
+function CustomMovieSelect({ label, name }) {
   const { values, setFieldValue } = useFormikContext();
   const [selectValue, setSelectValue] = useState(selectedValues(values.genres));
 
@@ -30,4 +30,4 @@ function CustomSelect({ label, name }) {
   )
 }
 
-export default CustomSelect
+export default CustomMovieSelect

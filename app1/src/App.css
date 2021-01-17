@@ -10,7 +10,11 @@
   flex-wrap: wrap;
 }
 
-.main-menu a {
+#main-menu a {
   text-decoration: none;
   margin: 5px;
+}
+
+#main-menu a.active {
+  color: red;
 }
