@@ -6,6 +6,7 @@ const initialState = {
     sortOrder: 'desc',
     filter: false,
     search: false,
+    searchBy: 'title',
     limit: 9,
   },
   movies: [],
