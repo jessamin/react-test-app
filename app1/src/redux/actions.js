@@ -10,7 +10,7 @@ function fetchMoviesListAction(action, filter) {
     })
 
     const uriPath = Object.entries(filter)
-      .filter(([key, value]) => value !== false || value !== '')
+      .filter(([key, value]) => value !== false && value !== '')
       .map(([key, value]) => {
         return value ? `${encodeURIComponent(key)}=${encodeURIComponent(value)}` : ''
       })
