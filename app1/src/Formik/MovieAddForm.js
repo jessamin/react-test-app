@@ -1,6 +1,6 @@
 import React from 'react'
 import {Formik, Form, ErrorMessage, useFormikContext} from 'formik'
-import * as Yup from 'yup'
+
 
 import { useDispatch, useSelector } from 'react-redux'
 import {AddMovieAction} from "../redux/actions";
@@ -9,42 +9,16 @@ import CustomMovieSelect from "./CustomMovieSelect";
 import DatePicker from "./DatePicker";
 import Input from './Input'
 import Textarea from './Textarea'
+import { validationSchema, formInitialValues } from "../variables/variables";
 
 function MovieAddForm({ close }) {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.movies.error)
   const msg = useSelector((state) => state.movies.msg)
 
-  const initialValues = {
-    title: '',
-    tagline: '',
-    vote_average: '',
-    vote_count: '',
-    release_date: '',
-    poster_path: '',
-    overview: '',
-    budget: '',
-    revenue: '',
-    runtime: '',
-    genres: []
-  }
-
-  const validationSchema = Yup.object({
-    title: Yup.string().required('Required'),
-    poster_path: Yup.string().required('Required'),
-    overview: Yup.string().required('Required'),
-    runtime: Yup.number().required('Required'),
-    genres: Yup.array().required('Required'),
-    release_date: Yup.date().nullable(),
-    vote_average: Yup.number().max(10),
-    vote_count: Yup.number(),
-    budget: Yup.number(),
-    revenue: Yup.number()
-  })
-
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={formInitialValues}
       validationSchema={validationSchema}
 
       onSubmit={(values, { setSubmitting }) => {
@@ -99,7 +73,6 @@ function MovieAddForm({ close }) {
               label='Genres'
               name='genres'/>
 
-            <button type="reset">Reset</button>
             <button type="submit">Submit</button>
           </Form>
         )
