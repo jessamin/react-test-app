@@ -41,7 +41,6 @@ function MovieReducer (state = initialState, action) {
       return {
         ...state,
         error: null,
-        movies: [...state.movies, action.payload],
         msg: '!!!!!Movie successfully ADDED'
       }
     case ACTION.ADD_MOVIE_ERROR:

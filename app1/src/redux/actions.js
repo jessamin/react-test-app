@@ -62,14 +62,14 @@ export const fetchMoviesActionError = error => ({
 
 
 // Add movie.
-export function AddMovieAction(movie) {
+export function AddMovieAction(movie, filterQuery) {
   return async (dispatch) => {
     dispatch(addMovieInit(movie))
 
     try {
       const response = await axios.post(apiUrl, movie)
       dispatch(addMovieSuccess(response.data))
-      dispatch(fetchMoviesListAction())
+      dispatch(fetchMoviesListAction(ACTION.FETCH_MOVIES_INIT, filterQuery))
     } catch (error) {
       dispatch(addMovieError(error))
       throw error;
