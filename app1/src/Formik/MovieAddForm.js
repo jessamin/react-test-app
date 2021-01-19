@@ -15,6 +15,7 @@ function MovieAddForm({ close }) {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.movies.error)
   const msg = useSelector((state) => state.movies.msg)
+  const filterQuery = useSelector(state => state.filter.query)
 
   return (
     <Formik
@@ -22,7 +23,7 @@ function MovieAddForm({ close }) {
       validationSchema={validationSchema}
 
       onSubmit={(values, { setSubmitting }) => {
-        dispatch( AddMovieAction(values) )
+        dispatch( AddMovieAction(values, filterQuery) )
         close()
       }}
     >
