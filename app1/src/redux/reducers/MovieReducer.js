@@ -82,14 +82,13 @@ function MovieReducer (state = initialState, action) {
     case ACTION.DELETE_MOVIE_SUCCESS:
       return {
         ...state,
-        movies: state.movies.filter( movie => movie.id !== action.payload ),
         msg: '!!!!! Movie successfully DELETED'
       }
     case ACTION.DELETE_MOVIE_ERROR:
       return {
         ...state,
         error: true,
-        msg: '!!!ERROR'
+        msg: action.payload
       }
 
     default:

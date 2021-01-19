@@ -30,7 +30,7 @@ function MovieCardEditControls(props) {
                   </div>
 
                   <div className="content">
-                    <MovieConfirmDelete mid={props.mid} />
+                    <MovieConfirmDelete movieId={props.movieId} />
                   </div>
                 </div>
               )}

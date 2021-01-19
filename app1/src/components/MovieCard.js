@@ -1,24 +1,18 @@
 import React from 'react'
 import './css/MovieCard.css'
 import MovieCardEditControls from './MovieCardEditControls'
+import MovieCardImg from "./MovieCardImg";
 
 function MovieCard({movie}) {
 
   return (
     <div className="movie-card">
-      <MovieCardEditControls mid={movie.id} />
+      <MovieCardEditControls movieId={movie.id} />
       <h3>{movie.title}</h3>
       <p>{movie.vote_average}</p>
       <p>{movie.genres.map(genre => genre).join(", ")}</p>
       <p>{movie.release_date}</p>
-      <img
-        alt={movie.title}
-        src={movie.poster_path}
-        onError={(e) => {
-          e.target.onerror = null
-          e.target.src = "/img/default.png"
-        }}
-        width="250px" />
+      <MovieCardImg movie={movie}/>
     </div>
   )
 }

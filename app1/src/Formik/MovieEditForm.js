@@ -1,43 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import {Formik, Form, errorMessage} from 'formik'
-import * as Yup from 'yup'
+import {Formik, Form } from 'formik'
 import LoadingOverlay from 'react-loading-overlay'
 import CustomMovieSelect from "./CustomMovieSelect";
 import {editMovieFetchAction, editMovieAction} from "../redux/actions";
 import DatePicker from "./DatePicker";
 import Input from './Input'
 import Textarea from './Textarea'
+import { validationSchema } from "../variables/variables";
 
-function MovieEditForm({ mid, close }) {
+function MovieEditForm({ movieId, close }) {
   const [movieData, setMovieData] = useState(null);
 
   const dispatch = useDispatch();
   const reduxMovie = useSelector(state => state.movies.movie)
+  const filterQuery = useSelector(state => state.filter.query)
   if(Object.keys(reduxMovie).length !== 0 && movieData === null) {
     setMovieData(reduxMovie)
   }
 
   useEffect(() => {
-    dispatch(editMovieFetchAction(mid))
+    dispatch(editMovieFetchAction(movieId))
   }, [dispatch]);
 
-  const validationSchema = Yup.object({
-    title: Yup.string().required('Required'),
-    poster_path: Yup.string().required('Required'),
-    overview: Yup.string().required('Required'),
-    runtime: Yup.number().required('Required'),
-    genres: Yup.array().required('Required'),
-    release_date: Yup.date().nullable(),
-    vote_average: Yup.number().max(10),
-    vote_count: Yup.number(),
-    budget: Yup.number(),
-    revenue: Yup.number()
-  })
-
-  const onSubmit = (values, actions) => {
-    dispatch( editMovieAction(values) )
+  const onSubmit = values => {
+    dispatch( editMovieAction(values, filterQuery) )
     close()
   }
 
@@ -94,7 +82,6 @@ function MovieEditForm({ mid, close }) {
                 label='Genres'
                 name='genres'/>
 
-              <button type="reset">Reset</button>
               <button type="submit">Submit</button>
             </Form>
         )}

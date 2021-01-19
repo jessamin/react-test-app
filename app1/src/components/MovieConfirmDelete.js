@@ -1,20 +1,20 @@
 import React from 'react'
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {deleteMovieAction} from "../redux/actions";
 
-function MovieConfirmDelete({mid}) {
+function MovieConfirmDelete({movieId}) {
   const dispatch = useDispatch()
+  const filter = useSelector(state => state.filter.query)
 
-  const deleteBtnOnClick = mid => {
-    dispatch(deleteMovieAction(mid))
-    window.location.reload();
+  const deleteBtnOnClick = movieId => {
+    dispatch(deleteMovieAction(movieId, filter))
   }
 
   return (
     <>
       <h1 className="header"> Delete Movie </h1>
       <div className="content"> Are you shure you want to delete this movie? </div>
-      <button onClick={deleteBtnOnClick(mid)} >Confirm</button>
+      <button onClick={deleteBtnOnClick(movieId)} >Confirm</button>
     </>
   )
 }
