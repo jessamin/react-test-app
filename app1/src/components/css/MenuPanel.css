@@ -1,0 +1,47 @@
+#root .controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 60px;
+  color: white
+}
+
+.controls > * {
+  display: flex;
+}
+
+#main-menu a,
+.sort-by {
+  margin: 0;
+  padding: 15px;
+  border-bottom: 1px solid white;
+}
+
+#main-menu a:first-child {
+  padding-left: 0;
+}
+
+#main-menu a.active {
+  color: #f65261;
+  border-bottom-color: #f65261;
+}
+
+.sort-by {
+  width: 100%;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sort-by > * {
+  background-color: #232323;
+  padding: 20px 20px 21px;
+  border: 0;
+}
+
+.sort-by select {
+  color: white;
+  font-size: inherit;
+}
+.sort-by label {
+  color: #999999;
+}

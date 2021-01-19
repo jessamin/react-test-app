@@ -2,51 +2,52 @@ import {ACTION} from "../types";
 
 const initialState = {
   movie: {},
-  error: true,
-  msg: null,
+  error: false,
+  msg: false,
   loading: false,
 }
 
 function MovieReducer (state = initialState, action) {
   switch (action.type) {
-    case ACTION.EDIT_MOVIE_FETCH_INIT:
+    case ACTION.FETCH_MOVIE_INIT:
       return {
         ...state,
-        error: null,
+        movie: {},
+        error: false,
         msg: false
       }
-    case ACTION.EDIT_MOVIE_FETCH_SUCCESS:
+    case ACTION.FETCH_MOVIE_SUCCESS:
       return {
         ...state,
-        error: null,
+        error: false,
         movie: action.payload,
         msg: false
       }
-    case ACTION.EDIT_MOVIE_FETCH_ERROR:
+    case ACTION.FETCH_MOVIE_ERROR:
       return {
         ...state,
         error: true,
         errorMsg: action.payload,
-        msg: false
+        msg: 'Movie not found'
       }
 
 
     case ACTION.ADD_MOVIE_INIT:
       return {
         ...state,
-        error: null,
+        error: false,
         msg: false
       }
     case ACTION.ADD_MOVIE_SUCCESS:
       return {
         ...state,
-        error: null,
+        error: false,
         msg: '!!!!!Movie successfully ADDED'
       }
     case ACTION.ADD_MOVIE_ERROR:
       return {
         ...state,
-        error: true,
+        error: false,
         msg: '!!!!!Error: ' + action.payload
       }
 
@@ -54,13 +55,13 @@ function MovieReducer (state = initialState, action) {
     case ACTION.EDIT_MOVIE_INIT:
       return {
         ...state,
-        error: null,
+        error: false,
         msg: false
       }
     case ACTION.EDIT_MOVIE_SUCCESS:
       return {
         ...state,
-        error: null,
+        error: false,
         movie: action.payload,
         msg: '!!!!!Movie successfully EDITED'
       }
@@ -75,7 +76,7 @@ function MovieReducer (state = initialState, action) {
     case ACTION.DELETE_MOVIE_INIT:
       return {
         ...state,
-        error: null,
+        error: false,
         msg: false
       }
     case ACTION.DELETE_MOVIE_SUCCESS:

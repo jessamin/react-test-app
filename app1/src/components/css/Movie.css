@@ -1,0 +1,59 @@
+.movie-area {
+  margin: 50px 0 10px;
+}
+
+.movie-area,
+.movie-area .content > div {
+  display: flex;
+}
+
+.movie-area .content {
+  align-content: center;
+}
+
+.movie-area > * {
+  margin: 20px;
+}
+
+.movie-area h1 {
+  font-size: 50px;
+  font-weight: 100;
+  font-family: Arial,sans-serif;
+  margin: 10px 20px 10px 0;
+}
+
+.movie-area .date {
+  color: #f65261;
+  font-size: 25px;
+}
+
+.movie-area .date > *{
+  margin-right: 35px;
+}
+
+.movie-area .title {
+  display: flex;
+  align-items: center;
+}
+
+.movie-area .vote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #999;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  padding: 12px;
+  font-size: 25px;
+  color: #6B9A4B;
+}
+
+.movie-area .overview {
+  font-size: 18px;
+}
+
+#movie-message-area {
+  color: #f65261;
+  font-size: 25px;
+}

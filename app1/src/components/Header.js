@@ -4,7 +4,7 @@ import HeaderSearch from './HeaderSearch'
 
 function Header() {
   return (
-    <div className="header">
+    <div className="header container">
       <HeaderAddMovieBtn />
       <HeaderSearch />
     </div>

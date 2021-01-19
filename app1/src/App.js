@@ -1,22 +1,26 @@
-import React from 'react';
+import React from 'react'
+import { BrowserRouter as Router,
+  Switch, Route } from "react-router-dom"
+
 import './App.css';
-import Header from './components/Header';
-import MainContent from './components/MainContent';
-import ControlsMenu from "./components/ControlsMenu";
-import SortBy from "./components/SortBy";
+import Movie from "./components/Movie"
+import Home from "./components/Home"
+import NotFound from "./components/404"
 
 function App() {
   return (
-    <div className="movie-page">
-      <Header/>
-      <div className="controls">
-        <ControlsMenu />
-        <SortBy />
-        <hr />
-      </div>
-      <MainContent/>
-    </div>
-  );
+    <>
+      <div id='message-area'></div>
+      <Router>
+        <Switch>
+          <Route exact={true} path='/' component={Home} />
+          <Route path='/film/:movieId' component={Movie} />
+          <Route path='/search/:word' component={Home} />
+          <Route component={NotFound} />
+        </Switch>
+      </Router>
+    </>
+  )
 }
 
-export default App;
+export default App

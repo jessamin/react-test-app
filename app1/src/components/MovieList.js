@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react'
-import MovieCard from './MovieCard';
-import { onLoadMoviesListAction } from '../redux/actions'
-import { useDispatch, useSelector } from "react-redux";
 
-function MainContent() {
+import { useDispatch, useSelector } from "react-redux"
+import { onLoadMoviesListAction } from '../redux/actions'
+
+import './css/MovieList.css'
+
+import MovieCard from './MovieCard'
+
+function MovieList() {
   const dispatch = useDispatch()
   const movieReduxList = useSelector(state => state.filter.movies)
   const totalAmount = useSelector(state => state.filter.count)
@@ -15,8 +19,8 @@ function MainContent() {
 
   return (
     <>
-      <span> {totalAmount ? totalAmount : 'No'} movies found</span>
-      <div className="main-content">
+      <div className="total container"> {totalAmount ? totalAmount : 'No'} movies found</div>
+      <div className="main-content container">
         {movieReduxList.map(movie => (
           <MovieCard movie={movie} key={movie.id} />
         ))}
@@ -25,4 +29,4 @@ function MainContent() {
   )
 }
 
-export default MainContent
+export default MovieList

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {Formik, Form } from 'formik'
 import LoadingOverlay from 'react-loading-overlay'
 import CustomMovieSelect from "./CustomMovieSelect";
-import {editMovieFetchAction, editMovieAction} from "../redux/actions";
+import {fetchMovieAction, editMovieAction} from "../redux/actions";
 import DatePicker from "./DatePicker";
 import Input from './Input'
 import Textarea from './Textarea'
@@ -21,7 +21,7 @@ function MovieEditForm({ movieId, close }) {
   }
 
   useEffect(() => {
-    dispatch(editMovieFetchAction(movieId))
+    dispatch(fetchMovieAction(movieId))
   }, [dispatch]);
 
   const onSubmit = values => {

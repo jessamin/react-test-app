@@ -1,8 +1,19 @@
-.movie-page {
+body, html {
+  height: 100%;
+  background-color: #555;
+  color: #999;
+}
+
+#root {
+  position: relative;
+  min-height: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 20px;
-  background-color: darkgrey;
+}
+
+.container {
+  padding: 30px 60px;
+  background-color: #232323;
 }
 
 .main-content {
@@ -15,6 +26,16 @@
   margin: 5px;
 }
 
-#main-menu a.active {
-  color: red;
+.message-area {
+  position: absolute;
+  width: 90%;
+  margin: 0;
+  padding: 0;
+}
+
+.message-area .error {
+  color: #f65261;
+}
+.message-area .note {
+  color: green;
 }
