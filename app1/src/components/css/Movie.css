@@ -35,6 +35,10 @@
   display: flex;
   align-items: center;
 }
+.movie-area .title h1,
+.movie-area .overview {
+  color: white;
+}
 
 .movie-area .vote {
   display: flex;

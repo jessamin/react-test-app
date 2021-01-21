@@ -9,11 +9,14 @@ function MovieCard({movie}) {
   return (
     <div className="movie-card">
       <MovieCardEditControls movieId={movie.id} />
-      <h3><Link to={link} className='nav-link'>{movie.title}</Link></h3>
-      <p>{movie.vote_average}</p>
-      <p>{movie.genres ? movie.genres.map(genre => genre).join(', ') : ''}</p>
-      <p>{movie.release_date}</p>
       <MovieCardImg movie={movie}/>
+      <p className='group'>
+        <Link to={link} className='nav-link'>{movie.title}</Link>
+        <div>{movie.vote_average}</div>
+        {movie.release_date ? <div>{(new Date(movie.release_date).getFullYear())}</div> : ''}
+      </p>
+      <div className='genres'>{movie.genres ? movie.genres.map(genre => genre).join(', ') : ''}</div>
+
     </div>
   )
 }
