@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
-
+import { Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
-import { onLoadMoviesListAction } from '../redux/actions'
 
+import { onLoadMoviesListAction, redirectToAction } from '../redux/actions'
 import './css/MovieList.css'
-
 import MovieCard from './MovieCard'
 
 function MovieList() {
@@ -12,10 +11,16 @@ function MovieList() {
   const movieReduxList = useSelector(state => state.filter.movies)
   const totalAmount = useSelector(state => state.filter.count)
   const filterState = useSelector(state => state.filter.query)
+  const error = useSelector(state => state.filter.error)
 
   useEffect(() => {
     dispatch(onLoadMoviesListAction(filterState))
   }, [dispatch]);
+
+  if(!error && totalAmount === 0) {
+    dispatch(redirectToAction(true))
+    return <Redirect to={'/no-movie-found'} />
+  }
 
   return (
     <>

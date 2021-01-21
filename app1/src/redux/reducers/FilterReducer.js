@@ -11,14 +11,19 @@ const initialState = {
   },
   movies: [],
   count: false,
-  error: false
+  error: false,
+  msg: false
 }
 
 function FilterReducer (state = initialState, action) {
   switch (action.type) {
     case ACTION.FETCH_MOVIES_INIT:
       return {
-        ...state
+        ...state,
+        movies: [],
+        count: false,
+        error: false,
+        msg: false
       }
     case ACTION.FETCH_MOVIES_SUCCESS:
       return {
@@ -31,6 +36,8 @@ function FilterReducer (state = initialState, action) {
     case ACTION.FETCH_MOVIES_ERROR:
       return {
         ...state,
+        movies: [],
+        count: false,
         error: true,
         msg: action.payload
       }
@@ -40,8 +47,8 @@ function FilterReducer (state = initialState, action) {
       return {
         ...state,
         query: action.payload,
-        count: false,
-        error: false
+        error: false,
+        msg: false
       }
     default:
       return state

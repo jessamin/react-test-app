@@ -5,6 +5,7 @@ import { BrowserRouter as Router,
 import './App.css';
 import Movie from "./components/Movie"
 import Home from "./components/Home"
+import NoMovieFound from "./components/NoMovieFound"
 import NotFound from "./components/404"
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route exact={true} path='/' component={Home} />
           <Route path='/film/:movieId' component={Movie} />
           <Route path='/search/:word' component={Home} />
+          <Route path='/no-movie-found' component={NoMovieFound} />
           <Route component={NotFound} />
         </Switch>
       </Router>

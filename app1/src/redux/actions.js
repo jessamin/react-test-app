@@ -193,3 +193,18 @@ export const deleteMovieError = error => ({
   type: ACTION.DELETE_MOVIE_ERROR,
   payload: error
 })
+
+export const setCurrentModuleAction = (module, page) => ({
+  type: ACTION.CURRENT_MODULE,
+  module: module,
+  page: page
+})
+
+export const setCurrentPageAction = page => ({
+  type: ACTION.CURRENT_PAGE,
+  payload: page
+})
+export const redirectToAction = redirect => ({
+  type: ACTION.REDIRECT,
+  payload: redirect
+})

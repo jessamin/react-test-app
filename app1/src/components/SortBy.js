@@ -13,7 +13,7 @@ function SortBy() {
   }
 
   return (
-    <div class='sort-by'>
+    <div className='sort-by'>
       <label htmlFor="sortby"> SORT BY</label>
       <select name="sortby" id="sortby"
               value={sortValue}

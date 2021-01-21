@@ -1,7 +1,10 @@
 #root .total {
   padding-left: 60px;
+  color: white;
+  font-size: 18px;
 }
 
 .main-content.container {
   padding: 30px;
+  flex: 1 1 auto;
 }

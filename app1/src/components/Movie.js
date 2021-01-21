@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { useDispatch, useSelector } from "react-redux"
-import { fetchMovieAction } from "../redux/actions";
+import { fetchMovieAction, setCurrentModuleAction } from "../redux/actions";
 
 import './css/Movie.css'
 
@@ -19,6 +19,7 @@ function Movie() {
 
   useEffect(() => {
     document.body.classList = ['page-film']
+    dispatch(setCurrentModuleAction('movie', '/film/' + movieId))
     dispatch(fetchMovieAction(movieId))
   }, [movieId])
 
