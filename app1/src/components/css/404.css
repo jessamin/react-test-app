@@ -1,0 +1,22 @@
+.area-404 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.area-404 div {
+  color: white;
+  font-size: 50px;
+  margin: 50px;
+}
+
+.area-404 button {
+  color: #f65261;
+  border-color: #f65261;
+  margin-top: 50px;
+  background-color: transparent;
+  padding: 15px 30px;
+  font-size: 20px;
+}

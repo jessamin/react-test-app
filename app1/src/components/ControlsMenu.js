@@ -6,12 +6,12 @@ import { menuList } from "../variables/variables";
 function ControlsMenu() {
   const dispatch = useDispatch()
   const filterQuery = useSelector(state => state.filter.query)
-  let selected = filterQuery.filter || 'All'
+  let selected = filterQuery.filter || 'ALL'
 
   const filterHandle = (e) => {
     e.preventDefault()
     let filterValue = e.target.text
-    if(e.target.text === 'All') {
+    if(e.target.text === 'ALL') {
       filterValue = false
     }
     dispatch(filterAction({...filterQuery, filter: filterValue}))

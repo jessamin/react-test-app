@@ -1,10 +1,10 @@
 import * as Yup from "yup";
 
 export const menuList = [
-  {id: 'all', name: 'All'},
-  {id: 'documentary', name: 'Documentary'},
-  {id: 'horror', name: 'Horror'},
-  {id: 'crime', name: 'Crime'}
+  {id: 'all', name: 'ALL'},
+  {id: 'documentary', name: 'DOCUMENTARY'},
+  {id: 'horror', name: 'HORROR'},
+  {id: 'crime', name: 'CRIME'}
 ]
 
 export const validationSchema = Yup.object({

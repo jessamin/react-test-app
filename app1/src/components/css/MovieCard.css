@@ -1,4 +1,23 @@
 .movie-card {
-  margin: 20px;
+  margin: 30px;
   width: 250px;
+}
+
+.movie-card {
+  font-size: 14px;
+}
+
+.movie-card a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.movie-card .group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.movie-card .genres {
+  margin-top: -10px;
 }

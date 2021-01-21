@@ -1,5 +1,11 @@
 import {ACTION} from './types'
-import axios, { apiUrl } from './client'
+import {
+  fetchMoviesListApi,
+  addMovieApi,
+  fetchMovieApi,
+  saveMovieApi,
+  deleteMovieApi
+} from './api'
 
 // Main fetch function.
 function fetchMoviesListAction(action, filter) {
@@ -17,7 +23,7 @@ function fetchMoviesListAction(action, filter) {
       .join("&")
 
     try {
-      const response = await axios.get(`${apiUrl}?${uriPath}`);
+      const response = await fetchMoviesListApi(uriPath)
       dispatch(fetchMoviesActionSuccess(response.data))
     } catch (error) {
       dispatch(fetchMoviesActionError(error))
@@ -67,7 +73,7 @@ export function AddMovieAction(movie, filterQuery) {
     dispatch(addMovieInit(movie))
 
     try {
-      const response = await axios.post(apiUrl, movie)
+      const response = await addMovieApi(movie)
       dispatch(addMovieSuccess(response.data))
       dispatch(fetchMoviesListAction(ACTION.FETCH_MOVIES_INIT, filterQuery))
     } catch (error) {
@@ -94,32 +100,32 @@ export const addMovieError = error => ({
 
 
 // Edit movie. Fetch.
-export function editMovieFetchAction(movieId) {
+export function fetchMovieAction(movieId) {
   return async (dispatch) => {
-    dispatch(editMovieFetchInit())
+    dispatch(fetchMovieInitAction(movieId))
 
     try {
-      const response = await axios.get(`${apiUrl}/${movieId}`);
-      dispatch(editMovieFetchSuccess(response.data))
+      const response = await fetchMovieApi(movieId)
+      dispatch(fetchMovieSuccessAction(response.data))
     } catch (error) {
-      dispatch(editMovieFetchError(error))
+      dispatch(fetchMovieErrorAction(error))
       throw error;
     }
   }
 }
 
-export const editMovieFetchInit = movieId => ({
-  type: ACTION.EDIT_MOVIE_FETCH_INIT,
+export const fetchMovieInitAction = movieId => ({
+  type: ACTION.FETCH_MOVIE_INIT,
   payload: movieId
 })
 
-export const editMovieFetchSuccess = movie => ({
-  type: ACTION.EDIT_MOVIE_FETCH_SUCCESS,
+export const fetchMovieSuccessAction = movie => ({
+  type: ACTION.FETCH_MOVIE_SUCCESS,
   payload: movie
 })
 
-export const editMovieFetchError = error => ({
-  type: ACTION.EDIT_MOVIE_FETCH_ERROR,
+export const fetchMovieErrorAction = error => ({
+  type: ACTION.FETCH_MOVIE_ERROR,
   payload: error
 })
 
@@ -130,7 +136,7 @@ export function editMovieAction(movie, filterQuery) {
     dispatch(addMovieInit(movie))
 
     try {
-      const response = await axios.put(apiUrl, movie);
+      const response = await saveMovieApi(movie)
       dispatch(editMovieSuccess(response.data))
       dispatch(fetchMoviesListAction(ACTION.FETCH_MOVIES_INIT, filterQuery))
     } catch (error) {
@@ -162,7 +168,7 @@ export function deleteMovieAction(movieId, filter) {
     dispatch(deleteMovieInit(movieId, filter))
 
     try {
-      const response = await axios.delete(`${apiUrl}/${movieId}`)
+      const response = await deleteMovieApi(movieId)
       dispatch(deleteMovieSuccess(response.data))
       dispatch(fetchMoviesListAction(ACTION.SORT_BY, filter))
     } catch (error) {
@@ -186,4 +192,25 @@ export const deleteMovieSuccess = movieId => ({
 export const deleteMovieError = error => ({
   type: ACTION.DELETE_MOVIE_ERROR,
   payload: error
+})
+
+export const setCurrentModuleAction = (module, page) => ({
+  type: ACTION.CURRENT_MODULE,
+  module: module,
+  page: page
+})
+
+export const setCurrentPageAction = page => ({
+  type: ACTION.CURRENT_PAGE,
+  payload: page
+})
+
+export const redirectToAction = redirect => ({
+  type: ACTION.REDIRECT,
+  payload: redirect
+})
+
+export const searchRedirectAction = query => ({
+  type: ACTION.SEARCH_REDIRECT,
+  payload: query
 })

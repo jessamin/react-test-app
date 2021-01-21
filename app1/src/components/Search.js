@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { searchAction } from "../redux/actions";
+import { searchRedirectAction } from "../redux/actions";
+import { useHistory, useParams } from "react-router-dom";
 
-function HeaderSearch() {
-  const [searchValue, setSearchValue] = useState('');
+function Search() {
+  const [searchValue, setSearchValue] = useState('')
+  const history = useHistory()
   const dispatch = useDispatch()
+  const { search } = useParams()
   const filterQuery = useSelector(state => state.filter.query)
 
   const handleInput = e => {
@@ -15,8 +18,14 @@ function HeaderSearch() {
 
   const handleSubmit = e => {
     e.preventDefault()
-    dispatch(searchAction({...filterQuery, search: searchValue}))
+    const link = '/search/' + encodeURIComponent(searchValue)
+    dispatch(searchRedirectAction({...filterQuery, search: searchValue}))
+    history.push(link)
   }
+
+  useEffect(() => {
+    setSearchValue(search)
+  }, [search])
 
   return (
     <form onSubmit={handleSubmit}>
@@ -29,4 +38,4 @@ function HeaderSearch() {
   )
 }
 
-export default HeaderSearch
+export default Search
