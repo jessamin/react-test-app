@@ -1,12 +1,12 @@
 import React from 'react'
 import HeaderAddMovieBtn from './HeaderAddMovieBtn'
-import HeaderSearch from './HeaderSearch'
+import Search from './Search'
 
 function Header() {
   return (
     <div className="header container">
       <HeaderAddMovieBtn />
-      <HeaderSearch />
+      <Search />
     </div>
   )
 }

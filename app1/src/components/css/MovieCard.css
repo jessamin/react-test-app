@@ -18,6 +18,6 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.movie-card .group .genres {
-  margin-top: 7px;
+.movie-card .genres {
+  margin-top: -10px;
 }

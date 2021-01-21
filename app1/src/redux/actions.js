@@ -204,7 +204,13 @@ export const setCurrentPageAction = page => ({
   type: ACTION.CURRENT_PAGE,
   payload: page
 })
+
 export const redirectToAction = redirect => ({
   type: ACTION.REDIRECT,
   payload: redirect
+})
+
+export const searchRedirectAction = query => ({
+  type: ACTION.SEARCH_REDIRECT,
+  payload: query
 })

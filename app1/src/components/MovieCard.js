@@ -10,11 +10,11 @@ function MovieCard({movie}) {
     <div className="movie-card">
       <MovieCardEditControls movieId={movie.id} />
       <MovieCardImg movie={movie}/>
-      <p className='group'>
+      <div className='group'>
         <Link to={link} className='nav-link'>{movie.title}</Link>
         <div>{movie.vote_average}</div>
         {movie.release_date ? <div>{(new Date(movie.release_date).getFullYear())}</div> : ''}
-      </p>
+      </div>
       <div className='genres'>{movie.genres ? movie.genres.map(genre => genre).join(', ') : ''}</div>
 
     </div>

@@ -50,6 +50,10 @@ function FilterReducer (state = initialState, action) {
         error: false,
         msg: false
       }
+    case ACTION.SEARCH_REDIRECT:
+      return {
+        ...state
+      }
     default:
       return state
   }
