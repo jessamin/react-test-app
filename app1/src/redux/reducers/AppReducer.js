@@ -1,4 +1,4 @@
-import {ACTION} from "../types";
+import { ACTION } from "../types";
 
 const initialState = {
   module: false,

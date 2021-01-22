@@ -28,12 +28,15 @@ function Search() {
   }, [search])
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Find your movie</h1>
-      <input type="text" name="search"
-             value={searchValue}
-             onChange={handleInput}/>
-      <button type='submit'>SEACH</button>
+    <form onSubmit={handleSubmit} className='search-form'>
+      <h1>FIND YOUR MOVIE</h1>
+      <div className='search-wrapper'>
+        <input type="text" name="search"
+               placeholder='What do you want to watch?'
+               value={searchValue}
+               onChange={handleInput}/>
+        <button type='submit'>SEACH</button>
+      </div>
     </form>
   )
 }

@@ -4,6 +4,7 @@ import {Redirect} from "react-router-dom";
 import './css/NoMovieFound.css'
 import Header from "./Header";
 import MenuPanel from "./MenuPanel";
+import Footer from "./Footer";
 
 function NoMovieFound() {
   const totalAmount = useSelector(state => state.filter.count)
@@ -26,6 +27,7 @@ function NoMovieFound() {
       <div className='no-movie-found container'>
         <div>No Movie Found</div>
       </div>
+      <Footer />
     </>
   )
 }
