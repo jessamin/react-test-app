@@ -35,15 +35,23 @@
 }
 
 .sort-by > * {
-  background-color: #232323;
-  padding: 20px 20px 21px;
+  padding: 15px 20px 21px;
   border: 0;
 }
 
 .sort-by select {
   color: white;
   font-size: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='red' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 10px;
+  padding-right: 30px;
 }
+
 .sort-by label {
   color: #999999;
 }

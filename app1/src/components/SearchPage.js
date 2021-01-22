@@ -6,6 +6,7 @@ import { searchAction, setCurrentModuleAction } from '../redux/actions'
 import MovieList from './MovieList'
 import Header from "./Header"
 import MenuPanel from "./MenuPanel"
+import Footer from "./Footer";
 
 function SearchPage() {
   const dispatch = useDispatch()
@@ -26,6 +27,7 @@ function SearchPage() {
       <Header />
       <MenuPanel />
       <MovieList />
+      <Footer />
     </>
   )
 }

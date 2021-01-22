@@ -1,0 +1,55 @@
+.header {
+  background-image: url('../img/home-bg.jpg');
+  height: 300px;
+  margin: 50px 0 10px;
+}
+
+.header h1 {
+  font-size: 38px;
+  font-weight: 200;
+  color: white;
+  letter-spacing: 3px;
+}
+
+.header button {
+  border: 0;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.header .top-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header .top-line button {
+  background-color: rgba(99, 99, 99, 0.5);
+  color: #f65261;
+}
+
+.header form {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.header form .search-wrapper {
+  display: flex;
+}
+
+.header form button {
+  background-color: #f65261;
+  color: white;
+  padding: 10px 70px;
+  margin-left: 10px;
+}
+
+.header form input {
+  background-color: #232323;
+  color: white;
+  padding: 13px;
+  border: 0;
+  flex-grow: 1;
+  border-radius: 5px;
+  font-size: 18px
+}

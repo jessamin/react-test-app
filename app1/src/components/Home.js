@@ -5,6 +5,7 @@ import { setCurrentModuleAction } from '../redux/actions'
 import MovieList from './MovieList'
 import Header from "./Header"
 import MenuPanel from "./MenuPanel"
+import Footer from "./Footer";
 
 function Home() {
   const dispatch = useDispatch()
@@ -19,6 +20,7 @@ function Home() {
       <Header />
       <MenuPanel />
       <MovieList />
+      <Footer />
     </>
   )
 }

@@ -6,7 +6,7 @@ import MovieAddForm from '../Formik/MovieAddForm'
 function HeaderAddMovieBtn() {
   return (
     <Popup
-      trigger={<button className='button'> ADD Movie </button>}
+      trigger={<button className='button'> + ADD MOVIE </button>}
       modal
     >
       {close => (
