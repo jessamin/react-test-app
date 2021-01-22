@@ -18,9 +18,14 @@ function Search() {
 
   const handleSubmit = e => {
     e.preventDefault()
-    const link = '/search/' + encodeURIComponent(searchValue)
-    dispatch(searchRedirectAction({...filterQuery, search: searchValue}))
-    history.push(link)
+    if( typeof searchValue === 'undefined' || searchValue.trim() === '') {
+      return false
+    }
+    else {
+      const link = '/search/' + encodeURIComponent(searchValue)
+      dispatch(searchRedirectAction({...filterQuery, search: searchValue}))
+      history.push(link)
+    }
   }
 
   useEffect(() => {
