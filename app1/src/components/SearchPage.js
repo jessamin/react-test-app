@@ -10,7 +10,7 @@ import Footer from "./Footer";
 
 function SearchPage() {
   const dispatch = useDispatch()
-  const { search } = useParams()
+  let { search } = useParams()
   const filterQuery = useSelector(state => state.filter.query)
 
   useEffect(() => {
