@@ -12,7 +12,7 @@ function MovieCard({movie}) {
       <MovieCardImg movie={movie}/>
       <div className='group'>
         <Link to={link} className='nav-link'>{movie.title}</Link>
-        <div>{movie.vote_average}</div>
+        <div className='vote'>{movie.vote_average}</div>
         {movie.release_date ? <div className='year'>{(new Date(movie.release_date).getFullYear())}</div> : ''}
       </div>
       <div className='genres'>{movie.genres ? movie.genres.map(genre => genre).join(', ') : ''}</div>

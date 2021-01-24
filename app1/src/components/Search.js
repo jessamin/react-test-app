@@ -7,8 +7,12 @@ function Search() {
   const [searchValue, setSearchValue] = useState('')
   const history = useHistory()
   const dispatch = useDispatch()
-  const { search } = useParams()
+  let { search } = useParams()
   const filterQuery = useSelector(state => state.filter.query)
+
+  if(!search) {
+    search = filterQuery.search;
+  }
 
   const handleInput = e => {
     e.preventDefault()
@@ -27,6 +31,10 @@ function Search() {
       history.push(link)
     }
   }
+
+  useEffect(() => {
+    setSearchValue(search)
+  }, [])
 
   useEffect(() => {
     setSearchValue(search)

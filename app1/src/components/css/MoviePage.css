@@ -1,17 +1,21 @@
 .movie-area {
+  display: flex;
+  flex-direction: column;
   margin: 50px 0 10px;
 }
 
-.movie-area,
-.movie-area .content > div {
-  display: flex;
+.movie-area .content > * {
+  margin: 20px 0 0;
 }
 
+.movie-area .content-wrapper {
+  display: flex;
+}
 .movie-area .content {
   align-content: center;
 }
 
-.movie-area > * {
+.movie-area .content-wrapper > * {
   margin: 20px;
 }
 
@@ -19,7 +23,7 @@
   font-size: 50px;
   font-weight: 100;
   font-family: Arial,sans-serif;
-  margin: 10px 20px 10px 0;
+  margin: 0 20px 10px 0;
 }
 
 .movie-area .date {
@@ -33,7 +37,6 @@
 
 .movie-area .title {
   display: flex;
-  align-items: center;
 }
 .movie-area .title h1,
 .movie-area .overview {
@@ -55,6 +58,15 @@
 
 .movie-area .overview {
   font-size: 18px;
+}
+
+.movie-area .tagline {
+  margin: 0;
+}
+
+.movie-area .content-wrapper img {
+  width: 250px;
+  height: 375px;
 }
 
 #movie-message-area {

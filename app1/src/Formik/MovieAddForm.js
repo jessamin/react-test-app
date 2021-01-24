@@ -1,7 +1,6 @@
 import React from 'react'
 import {Formik, Form, ErrorMessage, useFormikContext} from 'formik'
 
-
 import { useDispatch, useSelector } from 'react-redux'
 import {AddMovieAction} from "../redux/actions";
 

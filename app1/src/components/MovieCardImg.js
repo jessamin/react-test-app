@@ -9,8 +9,7 @@ function MovieCardImg({movie}) {
       onError={(e) => {
         e.target.onerror = null
         e.target.src = "/img/default.png"
-      }}
-      width="250px" />
+      }} />
   )
 }
 
