@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import { useHistory } from "react-router-dom"
 import './css/404.css'
 
-function NotFound() {
+function NotFoundPage() {
   const history = useHistory()
-  const navigateTo = () => history.push('/')
+  const navigateTo = () => history.push('/', {from: 'Redirected from 404 page'})
 
   useEffect(() => {
     document.body.classList = ['page-404']
@@ -19,4 +19,4 @@ function NotFound() {
   )
 }
 
-export default NotFound
+export default NotFoundPage

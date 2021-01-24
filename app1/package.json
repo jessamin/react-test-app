@@ -12,6 +12,8 @@
     "formik": "^2.2.6",
     "prop-types": "^15.7.2",
     "react": "^16.8.0",
+    "react-alert": "^7.0.2",
+    "react-alert-template-basic": "^1.0.0",
     "react-datepicker": "^3.4.1",
     "react-dom": "^16.8.0",
     "react-loading-overlay": "^1.0.1",

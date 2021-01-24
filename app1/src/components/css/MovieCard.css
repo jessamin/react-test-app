@@ -9,13 +9,16 @@
   color: white;
   text-decoration: none;
   font-size: 18px;
+  max-width: 175px;
+  max-height: 21px;
+  overflow: hidden;
 }
 
 .movie-card .group {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 7px 0;
+  margin: 7px 0 3px;
 }
 
 .movie-card button {
@@ -35,4 +38,14 @@
   border: 1px solid gray;
   border-radius: 5px;
   padding: 0 10px;
+  line-height: 23px;
+}
+
+.movie-card .vote {
+  line-height: 23px;
+}
+
+.movie-card img {
+  width: 250px;
+  height: 375px;
 }

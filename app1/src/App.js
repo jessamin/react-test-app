@@ -3,11 +3,11 @@ import { BrowserRouter as Router,
   Switch, Route } from "react-router-dom"
 
 import './App.css';
-import Movie from "./components/Movie"
-import Home from "./components/Home"
+import MoviePage from "./components/MoviePage"
+import HomePage from "./components/HomePage"
 import SearchPage from "./components/SearchPage"
-import NoMovieFound from "./components/NoMovieFound"
-import NotFound from "./components/404"
+import NoMovieFoundPage from "./components/NoMovieFoundPage"
+import NotFoundPage from "./components/NotFoundPage"
 
 function App() {
   return (
@@ -15,11 +15,11 @@ function App() {
       <div id='message-area'></div>
       <Router>
         <Switch>
-          <Route exact={true} path='/' component={Home} />
-          <Route path='/film/:movieId' component={Movie} />
+          <Route exact={true} path='/' component={HomePage} />
+          <Route path='/film/:movieId' component={MoviePage} />
           <Route path='/search/:search' component={SearchPage} />
-          <Route path='/no-movie-found' component={NoMovieFound} />
-          <Route component={NotFound} />
+          <Route path='/no-movie-found' component={NoMovieFoundPage} />
+          <Route component={NotFoundPage} />
         </Switch>
       </Router>
     </>
