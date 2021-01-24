@@ -10,7 +10,7 @@ function Search() {
   let { search } = useParams()
   const filterQuery = useSelector(state => state.filter.query)
 
-  if(!search) {
+  if(!search && filterQuery.search) {
     search = filterQuery.search;
   }
 
