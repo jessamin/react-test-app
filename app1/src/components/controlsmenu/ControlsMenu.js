@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { filterAction } from "../redux/actions";
-import { menuList } from "../variables/variables";
+import { filterAction } from "../../redux/actions";
+import { menuList } from "../../variables/variables";
 
 function ControlsMenu() {
   const dispatch = useDispatch()

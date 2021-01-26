@@ -1,7 +1,7 @@
 import React from 'react'
 import Popup from 'reactjs-popup'
 import 'reactjs-popup/dist/index.css';
-import MovieAddForm from '../Formik/MovieAddForm'
+import MovieAddForm from '../../Formik/MovieAddForm'
 
 function HeaderAddMovieBtn() {
   return (

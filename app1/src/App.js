@@ -3,11 +3,11 @@ import { BrowserRouter as Router,
   Switch, Route } from "react-router-dom"
 
 import './App.css';
-import MoviePage from "./components/MoviePage"
-import HomePage from "./components/HomePage"
-import SearchPage from "./components/SearchPage"
-import NoMovieFoundPage from "./components/NoMovieFoundPage"
-import NotFoundPage from "./components/NotFoundPage"
+import MoviePage from "./components/moviepage/MoviePage"
+import HomePage from "./components/homepage/HomePage"
+import SearchPage from "./components/searchpage/SearchPage"
+import NoMovieFoundPage from "./components/nomoviefoundpage/NoMovieFoundPage"
+import NotFoundPage from "./components/notfoundpage/NotFoundPage"
 
 function App() {
   return (

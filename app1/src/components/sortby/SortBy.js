@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { sortByAction } from "../redux/actions";
+import { sortByAction } from "../../redux/actions";
 
 function SortBy() {
   const dispatch = useDispatch()

@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './css/MovieCard.css'
-import MovieCardEditControls from './MovieCardEditControls'
-import MovieCardImg from './MovieCardImg'
+import MovieCardEditControls from '../moviecardeditcontrols/MovieCardEditControls'
+import MovieCardImg from '../MovieCardImg'
 
 function MovieCard({movie}) {
   const link = '/film/' + movie.id

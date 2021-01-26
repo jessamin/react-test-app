@@ -1,7 +1,7 @@
 import React from 'react'
 import Popup from 'reactjs-popup'
-import MovieEditForm from '../Formik/MovieEditForm'
-import MovieConfirmDelete from './MovieConfirmDelete'
+import MovieEditForm from '../../Formik/MovieEditForm'
+import MovieConfirmDelete from '../MovieConfirmDelete'
 
 function MovieCardEditControls(props) {
   return (
@@ -11,7 +11,7 @@ function MovieCardEditControls(props) {
           <a className='close' onClick={close}> &times; </a>
 
           <div className='movie-card-controls-popup'>
-            <Popup trigger={<button className="button">Edit</button>} on='click' >
+            <Popup trigger={<button className="button">Edit</button>} on='click' nested >
               {closeIn => (
                 <div className='modal'>
                   <a className='close' onClick={closeIn}> &times; </a>
