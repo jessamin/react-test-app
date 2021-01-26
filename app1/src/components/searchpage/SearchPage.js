@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
-import { searchAction, setCurrentModuleAction } from '../redux/actions'
+import { searchAction, setCurrentModuleAction } from '../../redux/actions'
 
-import MovieList from './MovieList'
-import Header from "./Header"
-import MenuPanel from "./MenuPanel"
-import Footer from "./Footer";
+import MovieList from '../movielist/MovieList'
+import Header from "../header/Header"
+import MenuPanel from "../menupanel/MenuPanel"
+import Footer from "../footer/Footer";
 
 function SearchPage() {
   const dispatch = useDispatch()

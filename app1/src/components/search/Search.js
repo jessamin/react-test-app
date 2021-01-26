@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { searchRedirectAction } from "../redux/actions";
+import { searchRedirectAction } from "../../redux/actions";
 import { useHistory, useParams } from "react-router-dom";
 
 function Search() {

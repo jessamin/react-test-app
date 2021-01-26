@@ -1,8 +1,8 @@
 import React from 'react'
 import './css/Header.css'
-import HeaderAddMovieBtn from './HeaderAddMovieBtn'
-import Search from './Search'
-import Logo from './Logo'
+import HeaderAddMovieBtn from '../headeraddmoviebtn/HeaderAddMovieBtn'
+import Search from '../search/Search'
+import Logo from '../logo/Logo'
 
 function Header() {
   return (

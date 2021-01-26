@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 
-import { onLoadMoviesListAction, redirectToAction } from '../redux/actions'
+import { onLoadMoviesListAction, redirectToAction } from '../../redux/actions'
 import './css/MovieList.css'
-import MovieCard from './MovieCard'
+import MovieCard from '../moviecard/MovieCard'
 
 function MovieList() {
   const dispatch = useDispatch()

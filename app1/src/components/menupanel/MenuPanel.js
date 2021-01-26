@@ -1,6 +1,6 @@
 import './css/MenuPanel.css'
-import ControlsMenu from "./ControlsMenu";
-import SortBy from "./SortBy";
+import ControlsMenu from "../controlsmenu/ControlsMenu";
+import SortBy from "../sortby/SortBy";
 
 function MenuPanel() {
   return (

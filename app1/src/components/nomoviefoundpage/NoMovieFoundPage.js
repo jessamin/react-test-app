@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import { useSelector } from "react-redux"
 import { Redirect } from "react-router-dom";
 import { useAlert } from 'react-alert'
-import './css/NoMovieFound.css'
-import Header from "./Header";
-import MenuPanel from "./MenuPanel";
-import Footer from "./Footer";
+import './css/NoMovieFoundPage.css'
+import Header from "../header/Header";
+import MenuPanel from "../menupanel/MenuPanel";
+import Footer from "../footer/Footer";
 
 function NoMovieFoundPage() {
   const totalAmount = useSelector(state => state.filter.count)

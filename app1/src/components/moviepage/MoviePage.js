@@ -2,15 +2,15 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { useDispatch, useSelector } from "react-redux"
-import { fetchMovieAction, setCurrentModuleAction } from "../redux/actions"
+import { fetchMovieAction, setCurrentModuleAction } from "../../redux/actions"
 
 import './css/MoviePage.css'
 
-import MovieCardImg from "./MovieCardImg";
-import MovieList from "./MovieList";
-import MenuPanel from "./MenuPanel";
-import Footer from "./Footer";
-import ShortHeader from "./ShortHeader";
+import MovieCardImg from "../MovieCardImg";
+import MovieList from "../movielist/MovieList";
+import MenuPanel from "../menupanel/MenuPanel";
+import Footer from "../footer/Footer";
+import ShortHeader from "../shortheader/ShortHeader";
 import { useAlert } from "react-alert";
 
 function MoviePage() {

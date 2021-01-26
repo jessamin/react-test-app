@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from "react-redux"
-import { setCurrentModuleAction } from '../redux/actions'
-import MovieList from './MovieList'
-import Header from "./Header"
-import MenuPanel from "./MenuPanel"
-import Footer from "./Footer";
+import { setCurrentModuleAction } from '../../redux/actions'
+import MovieList from '../movielist/MovieList'
+import Header from "../header/Header"
+import MenuPanel from "../menupanel/MenuPanel"
+import Footer from "../footer/Footer";
 import { useHistory } from "react-router-dom";
 import { useAlert } from "react-alert";
 
