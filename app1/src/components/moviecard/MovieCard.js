@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './css/MovieCard.css'
-import MovieCardEditControls from '../moviecardeditcontrols/MovieCardEditControls'
+import MovieCardEditControls from './MovieCardEditControls'
 import MovieCardImg from '../MovieCardImg'
 
 function MovieCard({movie}) {

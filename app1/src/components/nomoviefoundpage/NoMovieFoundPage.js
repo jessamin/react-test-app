@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import { useAlert } from 'react-alert'
 import './css/NoMovieFoundPage.css'
 import Header from "../header/Header";
-import MenuPanel from "../menupanel/MenuPanel";
+import MenuPanel from "../menu/MenuPanel";
 import Footer from "../footer/Footer";
 
 function NoMovieFoundPage() {

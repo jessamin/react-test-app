@@ -5,7 +5,7 @@ import { searchAction, setCurrentModuleAction } from '../../redux/actions'
 
 import MovieList from '../movielist/MovieList'
 import Header from "../header/Header"
-import MenuPanel from "../menupanel/MenuPanel"
+import MenuPanel from "../menu/MenuPanel"
 import Footer from "../footer/Footer";
 
 function SearchPage() {
