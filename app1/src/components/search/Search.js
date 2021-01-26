@@ -22,8 +22,13 @@ function Search() {
 
   const handleSubmit = e => {
     e.preventDefault()
-    if( typeof searchValue === 'undefined' || searchValue.trim() === '') {
+    if( typeof searchValue === 'undefined') {
       return false
+    }
+    else if(searchValue.trim() === '' && search) {
+      const link = '/'
+      dispatch(searchRedirectAction({...filterQuery, search: false}))
+      history.push(link)
     }
     else {
       const link = '/search/' + encodeURIComponent(searchValue)
