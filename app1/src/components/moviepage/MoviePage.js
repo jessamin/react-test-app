@@ -8,9 +8,9 @@ import './css/MoviePage.css'
 
 import MovieCardImg from "../MovieCardImg";
 import MovieList from "../movielist/MovieList";
-import MenuPanel from "../menupanel/MenuPanel";
+import MenuPanel from "../menu/MenuPanel";
 import Footer from "../footer/Footer";
-import ShortHeader from "../shortheader/ShortHeader";
+import ShortHeader from "../header/ShortHeader";
 import { useAlert } from "react-alert";
 
 function MoviePage() {
