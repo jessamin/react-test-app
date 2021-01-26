@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useSelector } from "react-redux"
 import { Redirect } from "react-router-dom";
 import { useAlert } from 'react-alert'
@@ -6,6 +6,7 @@ import './css/NoMovieFoundPage.css'
 import Header from "../header/Header";
 import MenuPanel from "../menu/MenuPanel";
 import Footer from "../footer/Footer";
+import useClassAndModuleSet from "../customhooks/useClassAndModuleSet";
 
 function NoMovieFoundPage() {
   const totalAmount = useSelector(state => state.filter.count)
@@ -14,9 +15,7 @@ function NoMovieFoundPage() {
   const app = useSelector(state => state.app)
   const alert = useAlert()
 
-  useEffect(() => {
-    document.body.classList = ['page-no-movie-found']
-  }, [])
+  useClassAndModuleSet('no-movie-found')
 
   if(error) {
     alert.error(errorMsg.toString())

@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { useDispatch, useSelector } from "react-redux"
-import { fetchMovieAction, setCurrentModuleAction } from "../../redux/actions"
+import { fetchMovieAction } from "../../redux/actions"
 
+import useClassAndModuleSet from "../customhooks/useClassAndModuleSet";
 import './css/MoviePage.css'
 
 import MovieCardImg from "../MovieCardImg";
@@ -21,9 +22,9 @@ function MoviePage() {
   const error = useSelector((state) => state.movies.error)
   const errorMsg = useSelector((state) => state.movies.msg)
 
+  useClassAndModuleSet('movie', '/film/' + movieId, dispatch)
+
   useEffect(() => {
-    document.body.classList = ['page-film']
-    dispatch(setCurrentModuleAction('movie', '/film/' + movieId))
     dispatch(fetchMovieAction(movieId))
   }, [movieId])
 
@@ -33,7 +34,6 @@ function MoviePage() {
 
   return (
     <>
-
       <div className='movie-area container'>
         <ShortHeader />
         <div className='content-wrapper'>

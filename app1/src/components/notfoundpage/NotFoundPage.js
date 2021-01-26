@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react'
-import { useHistory } from "react-router-dom"
+import React from 'react'
+import { useHistory } from 'react-router-dom'
+import useClassAndModuleSet from '../customhooks/useClassAndModuleSet'
 import './css/404.css'
 
 function NotFoundPage() {
   const history = useHistory()
   const navigateTo = () => history.push('/', {from: 'Redirected from 404 page'})
 
-  useEffect(() => {
-    document.body.classList = ['page-404']
-  }, [])
+  useClassAndModuleSet('404')
 
   return (
     <div className='area-404 container'>
