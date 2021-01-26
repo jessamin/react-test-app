@@ -7,7 +7,7 @@ import MovieCardImg from '../MovieCardImg'
 function MovieCard({movie}) {
   const link = '/film/' + movie.id
   return (
-    <div className='movie-card'>
+    <div className='movie-card' data-testid='movie-card'>
       <MovieCardEditControls movieId={movie.id} />
       <MovieCardImg movie={movie}/>
       <div className='group'>
