@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch } from "react-redux"
-import { setCurrentModuleAction } from '../../redux/actions'
 import MovieList from '../movielist/MovieList'
 import Header from "../header/Header"
 import MenuPanel from "../menu/MenuPanel"
 import Footer from "../footer/Footer";
 import { useHistory } from "react-router-dom";
 import { useAlert } from "react-alert";
+import useClassAndModuleSet from "../customhooks/useClassAndModuleSet";
 
 function HomePage() {
   const dispatch = useDispatch()
@@ -17,10 +17,7 @@ function HomePage() {
     alert.error(history.location.state.from)
   }
 
-  useEffect(() => {
-    document.body.classList = ['page-home']
-    dispatch(setCurrentModuleAction('home', '/'))
-  }, [])
+  useClassAndModuleSet('home', '/', dispatch)
 
   return (
     <>
