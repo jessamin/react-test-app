@@ -13,15 +13,15 @@ function SortBy() {
   }
 
   return (
-    <div className='sort-by'>
-      <label htmlFor="sortby"> SORT BY</label>
-      <select name="sortby" id="sortby"
+    <form className='sort-by'  data-testid="sort-by">
+      <label htmlFor="sortby">SORT BY</label>
+      <select name="sortby" id="sortby" data-testid="sort-by-select"
               value={sortValue}
               onChange={handleChange}>
         <option value="release_date">RELEASE DATE</option>
         <option value="vote_average">RATING</option>
       </select>
-    </div>
+    </form>
   )
 }
 

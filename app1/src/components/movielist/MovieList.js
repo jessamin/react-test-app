@@ -1,34 +1,29 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { useDispatch, useSelector } from "react-redux"
 
-import { onLoadMoviesListAction, redirectToAction } from '../../redux/actions'
 import './css/MovieList.css'
 import MovieCard from '../moviecard/MovieCard'
+import useMovieListDispatch from "../customhooks/useMovieListDispatch";
 
 function MovieList() {
-  const dispatch = useDispatch()
-  const movieReduxList = useSelector(state => state.filter.movies)
-  const totalAmount = useSelector(state => state.filter.count)
-  const filterState = useSelector(state => state.filter.query)
-  const error = useSelector(state => state.filter.error)
+  const { movieReduxList, totalAmount, error } = useMovieListDispatch()
 
-  useEffect(() => {
-    dispatch(onLoadMoviesListAction(filterState))
-  }, [dispatch]);
-
-  if(!error && totalAmount === 0) {
-    dispatch(redirectToAction(true))
+  if(error || totalAmount === 0) {
     return <Redirect to={'/no-movie-found'} />
+  }
+
+  let result = null
+  if(totalAmount > 0) {
+    result = movieReduxList.map(movie => (
+      <MovieCard movie={movie} key={movie.id} />
+    ))
   }
 
   return (
     <>
       <div className="total container"> {totalAmount ? totalAmount : 'No'} movies found</div>
       <div className="main-content container">
-        {movieReduxList.map(movie => (
-          <MovieCard movie={movie} key={movie.id} />
-        ))}
+        {result}
       </div>
     </>
   )
