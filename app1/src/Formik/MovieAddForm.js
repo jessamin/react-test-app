@@ -17,67 +17,70 @@ function MovieAddForm({ close }) {
   const filterQuery = useSelector(state => state.filter.query)
 
   return (
-    <Formik
-      initialValues={formInitialValues}
-      validationSchema={validationSchema}
+    <>
+      <h2 className='header-add'> Add Movie </h2>
+      <Formik
+        initialValues={formInitialValues}
+        validationSchema={validationSchema}
 
-      onSubmit={(values, { setSubmitting }) => {
-        dispatch( AddMovieAction(values, filterQuery) )
-        close()
-      }}
-    >
-      {
-        formik => (
-          <Form onSubmit={formik.handleSubmit}>
-            {error ? <div className="font-weight-bold alert alert-danger text-center mt-4">Todos los datos son obligatorios</div> : null}
+        onSubmit={(values, { setSubmitting }) => {
+          dispatch( AddMovieAction(values, filterQuery) )
+          close()
+        }}
+      >
+        {
+          formik => (
+            <Form onSubmit={formik.handleSubmit}>
+              {error ? <div className="font-weight-bold alert alert-danger text-center mt-4">Error</div> : null}
 
-            <Input
-              type='text'
-              label='Title'
-              name='title' />
-            <Input
-              type='text'
-              label='Tagline'
-              name='tagline' />
-            <Input
-              type='number'
-              label='Vote average'
-              name='vote_average' />
-            <Input
-              type='number'
-              label='Vote count'
-              name='vote_count' />
-            <DatePicker
-              label='Release date'
-              name='release_date'/>
-            <Input
-              type='text'
-              label='Poster path'
-              name='poster_path' />
-            <Textarea
-              label='Overview'
-              name='overview' />
-            <Input
-              type='number'
-              label='Budget'
-              name='budget' />
-            <Input
-              type='number'
-              label='Revenue'
-              name='revenue' />
-            <Input
-              type='number'
-              label='Runtime'
-              name='runtime' />
-            <CustomMovieSelect
-              label='Genres'
-              name='genres'/>
+              <Input
+                type='text'
+                label='Title'
+                name='title' />
+              <Input
+                type='text'
+                label='Tagline'
+                name='tagline' />
+              <Input
+                type='number'
+                label='Vote average'
+                name='vote_average' />
+              <Input
+                type='number'
+                label='Vote count'
+                name='vote_count' />
+              <DatePicker
+                label='Release date'
+                name='release_date'/>
+              <Input
+                type='text'
+                label='Poster path'
+                name='poster_path' />
+              <Textarea
+                label='Overview'
+                name='overview' />
+              <Input
+                type='number'
+                label='Budget'
+                name='budget' />
+              <Input
+                type='number'
+                label='Revenue'
+                name='revenue' />
+              <Input
+                type='number'
+                label='Runtime'
+                name='runtime' />
+              <CustomMovieSelect
+                label='Genres'
+                name='genres'/>
 
-            <button type="submit">Submit</button>
-          </Form>
-        )
-      }
-    </Formik>
+              <button type="submit">Submit</button>
+            </Form>
+          )
+        }
+      </Formik>
+    </>
   )
 }
 
